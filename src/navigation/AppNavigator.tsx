@@ -19,6 +19,8 @@ import EditTripScreen from '../screens/trips/EditTripScreen'
 import AddExpenseScreen from '../screens/expenses/AddExpenseScreen'
 import EditExpenseScreen from '../screens/expenses/EditExpenseScreen'
 import InviteMemberScreen from '../screens/trips/InviteMemberScreen'
+import JoinTripScreen from '../screens/trips/JoinTripScreen'
+import MemberPermissionsScreen from '../screens/trips/MemberPermissionsScreen'
 import ExpensesTabScreen from '../screens/expenses/ExpensesTabScreen'
 import ItineraryScreen from '../screens/itinerary/ItineraryScreen'
 import DiscoverScreen from '../screens/discover/DiscoverScreen'
@@ -113,6 +115,8 @@ function AppStack() {
         <Stack.Screen name="AddExpense" component={AddExpenseScreen} options={{ ...darkHeader, title: 'Tambah Pengeluaran' }} />
         <Stack.Screen name="EditExpense" component={EditExpenseScreen} options={{ ...darkHeader, title: 'Edit Pengeluaran' }} />
         <Stack.Screen name="InviteMember" component={InviteMemberScreen} options={{ ...darkHeader, title: 'Undang Anggota' }} />
+        <Stack.Screen name="MemberPermissions" component={MemberPermissionsScreen} options={{ ...darkHeader, title: 'Permissions' }} />
+        <Stack.Screen name="JoinTrip" component={JoinTripScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </ActiveTripProvider>
@@ -128,6 +132,15 @@ function AuthStack() {
   )
 }
 
+const linking = {
+  prefixes: ['kembara://'],
+  config: {
+    screens: {
+      JoinTrip: 'join/:token',
+    },
+  },
+}
+
 export default function AppNavigator() {
   const { session, loading } = useAuth()
 
@@ -140,7 +153,7 @@ export default function AppNavigator() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       {session ? <AppStack /> : <AuthStack />}
     </NavigationContainer>
   )
