@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {
   View, Text, ScrollView, TouchableOpacity,
   StyleSheet, Switch,
@@ -8,10 +8,12 @@ import { useCreateExpense } from '../../hooks/useExpenses'
 import { useExchangeRate, getRateToBase } from '../../hooks/useExchangeRate'
 import { useTrip } from '../../hooks/useTrip'
 import { useAuth } from '../../hooks/useAuth'
+import { useToast } from '../../context/ToastContext'
 import { ExpenseCategory } from '../../types'
 import { colors } from '../../theme'
 import AppInput from '../../components/ui/AppInput'
 import AppButton from '../../components/ui/AppButton'
+import DateInput from '../../components/ui/DateInput'
 import CategoryIcon from '../../components/ui/CategoryIcon'
 import Icon from '../../components/Icon'
 
@@ -28,6 +30,7 @@ export default function AddExpenseScreen({ route, navigation }: any) {
   const { data: trip } = useTrip(tripId)
   const { data: memberRows = [] } = useMembers(tripId)
   const createExpense = useCreateExpense()
+  const { showToast } = useToast()
 
   const [title, setTitle] = useState('')
   const [amount, setAmount] = useState('')
@@ -41,6 +44,7 @@ export default function AddExpenseScreen({ route, navigation }: any) {
   const [serviceCharge, setServiceCharge] = useState('')
   const [taxPct, setTaxPct] = useState('')
   const [showCharges, setShowCharges] = useState(false)
+  const [showSplit, setShowSplit] = useState(false)
   const [error, setError] = useState('')
 
   const baseCurrency = trip?.base_currency ?? 'IDR'
@@ -53,7 +57,7 @@ export default function AddExpenseScreen({ route, navigation }: any) {
 
   useEffect(() => {
     if (profile?.id && !paidBy) setPaidBy(profile.id)
-  }, [profile?.id])
+  }, [profile?.id, paidBy])
 
   useEffect(() => {
     const initial: Record<string, boolean> = {}
@@ -76,6 +80,13 @@ export default function AddExpenseScreen({ route, navigation }: any) {
   const selectedParticipantIds = Object.entries(participants)
     .filter(([, selected]) => selected)
     .map(([uid]) => uid)
+
+  const splitSummary = (() => {
+    const n = selectedParticipantIds.length
+    if (n === 0) return 'No participants selected'
+    if (splitEvenly) return `Split equally between ${n} ${n === 1 ? 'person' : 'people'}`
+    return `Custom split between ${n} ${n === 1 ? 'person' : 'people'}`
+  })()
 
   async function handleSubmit() {
     if (!title.trim() || !amount || !paidBy || selectedParticipantIds.length === 0) {
@@ -104,6 +115,7 @@ export default function AddExpenseScreen({ route, navigation }: any) {
           Object.entries(customShares).map(([k, v]) => [k, parseFloat(v) || 0])
         ),
       })
+      showToast('Expense added')
       navigation.goBack()
     } catch (e: any) {
       setError(e.message)
@@ -166,7 +178,7 @@ export default function AddExpenseScreen({ route, navigation }: any) {
         ))}
       </View>
 
-      <AppInput label="Date" placeholder="YYYY-MM-DD" value={date} onChangeText={setDate} />
+      <DateInput label="Date" value={date} onChange={setDate} />
 
       <TouchableOpacity style={styles.chargesToggle} onPress={() => setShowCharges(!showCharges)}>
         <Icon name={showCharges ? 'chevronR' : 'plus'} size={14} color={colors.ocean} />
@@ -222,45 +234,57 @@ export default function AddExpenseScreen({ route, navigation }: any) {
         )
       })}
 
-      <View style={styles.splitHeader}>
-        <Text style={styles.fieldLabel}>Split between</Text>
-        <View style={styles.splitToggle}>
-          <Text style={styles.splitLabel}>Equal split</Text>
-          <Switch
-            value={splitEvenly}
-            onValueChange={setSplitEvenly}
-            trackColor={{ true: colors.ocean, false: colors.sand }}
-          />
+      <TouchableOpacity style={styles.splitSummaryRow} onPress={() => setShowSplit(!showSplit)}>
+        <View style={styles.splitSummaryLeft}>
+          <Icon name="users" size={14} color={colors.ocean} />
+          <Text style={styles.splitSummaryText}>{splitSummary}</Text>
         </View>
-      </View>
+        <Icon name={showSplit ? 'chevronR' : 'plus'} size={14} color={colors.muted} />
+      </TouchableOpacity>
 
-      {memberRows.map((m) => {
-        const name = m.profile?.full_name ?? m.profile?.email ?? 'Unknown'
-        return (
-          <View key={m.user_id} style={styles.participantRow}>
-            <Switch
-              value={participants[m.user_id] ?? false}
-              onValueChange={() => setParticipants(prev => ({ ...prev, [m.user_id]: !prev[m.user_id] }))}
-              trackColor={{ true: colors.ocean }}
-            />
-            <Text style={styles.memberName}>{name}</Text>
-            {!splitEvenly && participants[m.user_id] && (
-              <AppInput
-                placeholder="Amount"
-                value={customShares[m.user_id] ?? ''}
-                onChangeText={v => setCustomShares(prev => ({ ...prev, [m.user_id]: v }))}
-                keyboardType="decimal-pad"
-                style={{ width: 100 }}
+      {showSplit && (
+        <View style={styles.splitBox}>
+          <View style={styles.splitHeader}>
+            <Text style={styles.fieldLabel}>Split between</Text>
+            <View style={styles.splitToggle}>
+              <Text style={styles.splitLabel}>Equal split</Text>
+              <Switch
+                value={splitEvenly}
+                onValueChange={setSplitEvenly}
+                trackColor={{ true: colors.ocean, false: colors.sand }}
               />
-            )}
+            </View>
           </View>
-        )
-      })}
 
-      {splitEvenly && selectedParticipantIds.length > 0 && amountInBase > 0 && (
-        <Text style={styles.splitPreview}>
-          Each pays: {(amountInBase / selectedParticipantIds.length).toLocaleString()} {baseCurrency}
-        </Text>
+          {memberRows.map((m) => {
+            const name = m.profile?.full_name ?? m.profile?.email ?? 'Unknown'
+            return (
+              <View key={m.user_id} style={styles.participantRow}>
+                <Switch
+                  value={participants[m.user_id] ?? false}
+                  onValueChange={() => setParticipants(prev => ({ ...prev, [m.user_id]: !prev[m.user_id] }))}
+                  trackColor={{ true: colors.ocean }}
+                />
+                <Text style={styles.memberName}>{name}</Text>
+                {!splitEvenly && participants[m.user_id] && (
+                  <AppInput
+                    placeholder="Amount"
+                    value={customShares[m.user_id] ?? ''}
+                    onChangeText={v => setCustomShares(prev => ({ ...prev, [m.user_id]: v }))}
+                    keyboardType="decimal-pad"
+                    style={{ width: 100 }}
+                  />
+                )}
+              </View>
+            )
+          })}
+
+          {splitEvenly && selectedParticipantIds.length > 0 && amountInBase > 0 && (
+            <Text style={styles.splitPreview}>
+              Each pays: {(amountInBase / selectedParticipantIds.length).toLocaleString()} {baseCurrency}
+            </Text>
+          )}
+        </View>
       )}
 
       <AppButton
@@ -314,6 +338,14 @@ const styles = StyleSheet.create({
   memberRowActive: { borderColor: colors.ocean, backgroundColor: colors.oceanSoft },
   memberName: { fontFamily: 'DMSans_500Medium', fontSize: 14, color: colors.text },
   memberNameActive: { color: colors.ocean },
+  splitSummaryRow: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    backgroundColor: colors.white, borderRadius: 12,
+    padding: 12, borderWidth: 1, borderColor: colors.border,
+  },
+  splitSummaryLeft: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  splitSummaryText: { fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
+  splitBox: { backgroundColor: colors.white, borderRadius: 16, padding: 14, gap: 12 },
   splitHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   splitToggle: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   splitLabel: { fontFamily: 'DMSans_400Regular', fontSize: 13, color: colors.muted },

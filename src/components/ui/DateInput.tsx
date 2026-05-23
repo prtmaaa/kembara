@@ -85,6 +85,9 @@ export default function DateInput({
           <View style={styles.modalOverlay}>
             <View style={styles.modalSheet}>
               <View style={styles.modalHeader}>
+                <TouchableOpacity onPress={() => setShow(false)}>
+                  <Text style={styles.cancelBtn}>Cancel</Text>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={confirmIOS}>
                   <Text style={styles.doneBtn}>Done</Text>
                 </TouchableOpacity>
@@ -124,9 +127,10 @@ const styles = StyleSheet.create({
     paddingBottom: 34,
   },
   modalHeader: {
-    flexDirection: 'row', justifyContent: 'flex-end',
+    flexDirection: 'row', justifyContent: 'space-between',
     paddingHorizontal: 20, paddingVertical: 12,
     borderBottomWidth: 1, borderBottomColor: colors.border,
   },
   doneBtn: { fontFamily: 'DMSans_600SemiBold', fontSize: 16, color: colors.ocean },
+  cancelBtn: { fontFamily: 'DMSans_400Regular', fontSize: 16, color: colors.muted },
 })
