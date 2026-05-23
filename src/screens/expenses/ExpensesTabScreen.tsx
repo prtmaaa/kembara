@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState } from 'react'
 import {
   View, Text, ScrollView, TouchableOpacity,
   StyleSheet, ActivityIndicator, SafeAreaView,
 } from 'react-native'
 import Svg, { Circle } from 'react-native-svg'
-import { useFocusEffect } from '@react-navigation/native'
-import { supabase } from '../../lib/supabase'
-import { Expense, Trip } from '../../types'
+import { useExpenses } from '../../hooks/useExpenses'
+import { useTrip } from '../../hooks/useTrip'
 import { colors } from '../../theme'
 import { useActiveTrip } from '../../context/ActiveTripContext'
 import Icon from '../../components/Icon'
 
-type CatFilter = 'all' | 'accommodation' | 'food' | 'transport' | 'activity'
+type CatFilter = 'all' | 'accommodation' | 'food' | 'transport' | 'activity' | 'shopping' | 'other'
 
 const CAT_LABELS: Record<CatFilter, string> = {
-  all: 'All', accommodation: 'Stay', food: 'Food', transport: 'Transport', activity: 'Activity',
+  all: 'All', accommodation: 'Stay', food: 'Food',
+  transport: 'Transport', activity: 'Activity', shopping: 'Shopping', other: 'Other',
 }
 
 const CAT_ICON_MAP: Record<string, { icon: any; bg: string; color: string }> = {
@@ -55,39 +55,18 @@ export default function ExpensesTabScreen({ navigation, route }: any) {
   const paramTripId = route?.params?.tripId
   const tripId = paramTripId ?? activeTripId
 
-  const [trip, setTrip] = useState<Trip | null>(null)
-  const [expenses, setExpenses] = useState<Expense[]>([])
-  const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<CatFilter>('all')
 
-  useFocusEffect(
-    useCallback(() => {
-      if (tripId) fetchData(tripId)
-      else setLoading(false)
-    }, [tripId])
-  )
-
-  async function fetchData(id: string) {
-    setLoading(true)
-    const [{ data: tripData }, { data: expData }] = await Promise.all([
-      supabase.from('trips').select('*').eq('id', id).single(),
-      supabase
-        .from('expenses')
-        .select('*, paid_by_profile:profiles!paid_by(*), participants:expense_participants(*)')
-        .eq('trip_id', id)
-        .order('date', { ascending: false }),
-    ])
-    setTrip(tripData)
-    setExpenses(expData ?? [])
-    setLoading(false)
-  }
+  const { data: trip, isLoading: tripLoading } = useTrip(tripId ?? '')
+  const { data: expenses = [], isLoading: expLoading } = useExpenses(tripId ?? '')
+  const loading = tripLoading || expLoading
 
   const total = expenses.reduce((s, e) => s + e.amount_in_base, 0)
-  // Use a rough reference: pct of total vs estimated (show at most 100%)
-  const pct = expenses.length > 0 ? Math.min(65, 100) : 0
+  const budget = trip?.budget ?? null
+  const pct = budget && total > 0 ? Math.min((total / budget) * 100, 100) : (expenses.length > 0 ? 65 : 0)
+  const remaining = budget ? Math.max(budget - total, 0) : null
   const filtered = filter === 'all' ? expenses : expenses.filter(e => e.category === filter)
-  const cats: CatFilter[] = ['all', 'accommodation', 'food', 'transport', 'activity']
-  const remaining = 0 // no budget column yet
+  const cats: CatFilter[] = ['all', 'accommodation', 'food', 'transport', 'activity', 'shopping', 'other']
 
   if (loading) {
     return (
@@ -131,10 +110,12 @@ export default function ExpensesTabScreen({ navigation, route }: any) {
               <Text style={styles.ringTotal}>
                 {total.toLocaleString('id-ID')}
               </Text>
-              <Text style={styles.ringSubText}>{trip.base_currency} total pengeluaran</Text>
-              <Text style={styles.ringRemaining}>
-                ↑ {expenses.length} transaksi
-              </Text>
+              <Text style={styles.ringSubText}>{trip.base_currency} total spent</Text>
+              {remaining !== null ? (
+                <Text style={styles.ringRemaining}>↑ {remaining.toLocaleString('id-ID')} remaining</Text>
+              ) : (
+                <Text style={styles.ringRemaining}>↑ {expenses.length} transactions</Text>
+              )}
             </View>
           </View>
 

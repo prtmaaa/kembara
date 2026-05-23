@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import {
   View, Text, ScrollView, TouchableOpacity,
   StyleSheet, ActivityIndicator, SafeAreaView,
@@ -7,12 +7,19 @@ import { LinearGradient } from 'expo-linear-gradient'
 import Svg, { Line } from 'react-native-svg'
 import { useQuery } from '@tanstack/react-query'
 import { supabase } from '../../lib/supabase'
-import { colors } from '../../theme'
+import { colors, categoryColor } from '../../theme'
 import { useAuth } from '../../hooks/useAuth'
 import { useActiveTrip } from '../../context/ActiveTripContext'
 import { useTrips } from '../../hooks/useTrips'
 import { Trip } from '../../types'
 import Icon from '../../components/Icon'
+import CategoryIcon from '../../components/ui/CategoryIcon'
+import AvatarInitials from '../../components/ui/AvatarInitials'
+
+const CAT_LABELS_SHORT: Record<string, string> = {
+  food: 'Food', transport: 'Transport', accommodation: 'Stay',
+  activity: 'Activity', shopping: 'Shopping', other: 'Other',
+}
 
 const TRIP_GRADIENTS = [
   ['#1D4D7A', '#1D5E5A', '#206640'] as const,
@@ -91,6 +98,41 @@ export default function TripListScreen({ navigation }: any) {
     enabled: tripIds.length > 0,
   })
 
+  const heroTrip = trips[0]
+
+  const { data: heroExpenses = [] } = useQuery({
+    queryKey: ['expenses', heroTrip?.id],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('expenses')
+        .select('*, paid_by_profile:profiles!paid_by(*)')
+        .eq('trip_id', heroTrip!.id)
+      if (error) throw error
+      return data
+    },
+    enabled: !!heroTrip?.id,
+  })
+
+  const categoryBreakdown = useMemo(() => {
+    const map: Record<string, number> = {}
+    heroExpenses.forEach((e: any) => {
+      map[e.category] = (map[e.category] ?? 0) + e.amount_in_base
+    })
+    return Object.entries(map)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 4)
+  }, [heroExpenses])
+
+  const memberContributions = useMemo(() => {
+    const map: Record<string, { name: string; paid: number }> = {}
+    heroExpenses.forEach((e: any) => {
+      const id = e.paid_by
+      const name = e.paid_by_profile?.full_name?.split(' ')[0] ?? e.paid_by_profile?.email ?? 'Unknown'
+      map[id] = { name, paid: (map[id]?.paid ?? 0) + e.amount_in_base }
+    })
+    return Object.values(map).sort((a, b) => b.paid - a.paid)
+  }, [heroExpenses])
+
   useEffect(() => {
     if (trips[0]) setActiveTripId(trips[0].id)
   }, [trips[0]?.id])
@@ -104,7 +146,6 @@ export default function TripListScreen({ navigation }: any) {
 
   const firstName = profile?.full_name?.split(' ')[0] ?? profile?.email?.split('@')[0] ?? ''
   const avatarLetter = firstName[0]?.toUpperCase() ?? '?'
-  const heroTrip = trips[0]
   const otherTrips = trips.slice(1)
 
   const heroMembers = heroTrip ? (memberCounts[heroTrip.id] ?? 1) : 0
@@ -249,6 +290,53 @@ export default function TripListScreen({ navigation }: any) {
                     </Text>
                   )}
                 </View>
+              </View>
+            </View>
+          )}
+
+          {heroTrip && categoryBreakdown.length > 0 && (
+            <View>
+              <View style={styles.sectionHead}>
+                <Text style={styles.sectionTitle}>By Category</Text>
+              </View>
+              <View style={styles.catBreakdownCard}>
+                {categoryBreakdown.map(([cat, amount]) => {
+                  const pct = heroSpent > 0 ? amount / heroSpent : 0
+                  const { icon: iconColor } = categoryColor[cat] ?? categoryColor.other
+                  return (
+                    <View key={cat} style={styles.catBreakdownRow}>
+                      <CategoryIcon category={cat as any} size={32} />
+                      <View style={styles.catBreakdownInfo}>
+                        <View style={styles.catBreakdownTop}>
+                          <Text style={styles.catBreakdownName}>{CAT_LABELS_SHORT[cat] ?? cat}</Text>
+                          <Text style={styles.catBreakdownAmt}>{formatShort(amount)}</Text>
+                        </View>
+                        <View style={styles.catBarTrack}>
+                          <View style={[styles.catBarFill, { width: `${Math.round(pct * 100)}%` as any, backgroundColor: iconColor }]} />
+                        </View>
+                      </View>
+                    </View>
+                  )
+                })}
+              </View>
+            </View>
+          )}
+
+          {heroTrip && memberContributions.length > 1 && (
+            <View>
+              <View style={styles.sectionHead}>
+                <Text style={styles.sectionTitle}>By Member</Text>
+              </View>
+              <View style={styles.memberContribCard}>
+                {memberContributions.map((m, i) => (
+                  <View key={i} style={styles.memberContribRow}>
+                    <AvatarInitials name={m.name} index={i} size={32} />
+                    <Text style={styles.memberContribName}>{m.name}</Text>
+                    <Text style={styles.memberContribAmt}>
+                      {formatShort(m.paid)} {heroTrip.base_currency}
+                    </Text>
+                  </View>
+                ))}
               </View>
             </View>
           )}
@@ -413,4 +501,26 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.45, shadowRadius: 16, elevation: 8,
   },
   fabText: { fontFamily: 'DMSans_600SemiBold', fontSize: 14, color: colors.white },
+
+  catBreakdownCard: {
+    backgroundColor: colors.white, borderRadius: 16, padding: 16, gap: 14,
+    shadowColor: '#000', shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.07, shadowRadius: 4, elevation: 2,
+  },
+  catBreakdownRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  catBreakdownInfo: { flex: 1, gap: 6 },
+  catBreakdownTop: { flexDirection: 'row', justifyContent: 'space-between' },
+  catBreakdownName: { fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
+  catBreakdownAmt: { fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: colors.text },
+  catBarTrack: { height: 4, backgroundColor: colors.sand, borderRadius: 100 },
+  catBarFill: { height: '100%' as any, borderRadius: 100 },
+
+  memberContribCard: {
+    backgroundColor: colors.white, borderRadius: 16, padding: 14, gap: 10,
+    shadowColor: '#000', shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.07, shadowRadius: 4, elevation: 2,
+  },
+  memberContribRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  memberContribName: { flex: 1, fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
+  memberContribAmt: { fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: colors.text },
 })
