@@ -5,6 +5,7 @@ import { useCreateTrip } from '../../hooks/useTrips'
 import { colors } from '../../theme'
 import AppButton from '../../components/ui/AppButton'
 import AppInput from '../../components/ui/AppInput'
+import DateInput from '../../components/ui/DateInput'
 
 const CURRENCIES = ['IDR', 'USD', 'EUR', 'SGD', 'MYR', 'JPY', 'AUD', 'GBP', 'THB']
 
@@ -69,8 +70,13 @@ export default function CreateTripScreen({ navigation }: any) {
         ))}
       </View>
 
-      <AppInput label="Start Date (optional)" value={startDate} onChangeText={setStartDate} placeholder="YYYY-MM-DD" />
-      <AppInput label="End Date (optional)" value={endDate} onChangeText={setEndDate} placeholder="YYYY-MM-DD" />
+      <DateInput label="Start Date (optional)" value={startDate} onChange={setStartDate} />
+      <DateInput
+        label="End Date (optional)"
+        value={endDate}
+        onChange={setEndDate}
+        minimumDate={startDate ? new Date(startDate) : undefined}
+      />
 
       <AppButton label="Create Trip" onPress={handleCreate} loading={createTrip.isPending} style={styles.btn} />
     </ScrollView>
@@ -82,10 +88,7 @@ const styles = StyleSheet.create({
   content: { padding: 20, gap: 12 },
   label: { fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
   currencyRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  chip: {
-    borderWidth: 1, borderColor: colors.border, borderRadius: 20,
-    paddingVertical: 6, paddingHorizontal: 14,
-  },
+  chip: { borderWidth: 1, borderColor: colors.border, borderRadius: 20, paddingVertical: 6, paddingHorizontal: 14 },
   chipActive: { backgroundColor: colors.night, borderColor: colors.ocean },
   chipText: { fontFamily: 'DMSans_400Regular', color: colors.text, fontSize: 13 },
   chipTextActive: { color: colors.white },

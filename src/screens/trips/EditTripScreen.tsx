@@ -7,6 +7,7 @@ import { useUpdateTrip } from '../../hooks/useTrips'
 import { colors } from '../../theme'
 import AppButton from '../../components/ui/AppButton'
 import AppInput from '../../components/ui/AppInput'
+import DateInput from '../../components/ui/DateInput'
 
 const CURRENCIES = ['IDR', 'USD', 'EUR', 'SGD', 'MYR', 'JPY', 'AUD', 'GBP', 'THB']
 
@@ -35,7 +36,7 @@ export default function EditTripScreen({ route, navigation }: any) {
 
   async function handleSave() {
     if (!name.trim() || !destination.trim()) {
-      setError('Trip name dan destination harus diisi.')
+      setError('Trip name and destination are required.')
       return
     }
     setError('')
@@ -85,10 +86,15 @@ export default function EditTripScreen({ route, navigation }: any) {
         ))}
       </View>
 
-      <AppInput label="Start Date (optional)" value={startDate} onChangeText={setStartDate} placeholder="YYYY-MM-DD" />
-      <AppInput label="End Date (optional)" value={endDate} onChangeText={setEndDate} placeholder="YYYY-MM-DD" />
+      <DateInput label="Start Date (optional)" value={startDate} onChange={setStartDate} />
+      <DateInput
+        label="End Date (optional)"
+        value={endDate}
+        onChange={setEndDate}
+        minimumDate={startDate ? new Date(startDate) : undefined}
+      />
 
-      <AppButton label="Simpan Perubahan" onPress={handleSave} loading={updateTrip.isPending} style={styles.btn} />
+      <AppButton label="Save Changes" onPress={handleSave} loading={updateTrip.isPending} style={styles.btn} />
     </ScrollView>
   )
 }
@@ -99,10 +105,7 @@ const styles = StyleSheet.create({
   loader: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   label: { fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
   currencyRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  chip: {
-    borderWidth: 1, borderColor: colors.border, borderRadius: 20,
-    paddingVertical: 6, paddingHorizontal: 14,
-  },
+  chip: { borderWidth: 1, borderColor: colors.border, borderRadius: 20, paddingVertical: 6, paddingHorizontal: 14 },
   chipActive: { backgroundColor: colors.night, borderColor: colors.ocean },
   chipText: { fontFamily: 'DMSans_400Regular', color: colors.text, fontSize: 13 },
   chipTextActive: { color: colors.white },
