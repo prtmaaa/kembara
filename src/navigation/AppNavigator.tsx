@@ -6,6 +6,7 @@ import { ActivityIndicator, View } from 'react-native'
 import { useAuth } from '../hooks/useAuth'
 import { colors } from '../theme'
 import { ActiveTripProvider } from '../context/ActiveTripContext'
+import { ToastProvider } from '../context/ToastContext'
 import Icon from '../components/Icon'
 import HeaderUser from '../components/HeaderUser'
 
@@ -108,22 +109,24 @@ const darkHeader = {
 
 function AppStack() {
   return (
-    <ActiveTripProvider>
-      <Stack.Navigator>
-        <Stack.Screen name="Main" component={MainTabs} options={{ headerShown: false }} />
-        <Stack.Screen name="TripDetail" component={TripDetailScreen} options={{ ...darkHeader, title: '' }} />
-        <Stack.Screen name="CreateTrip" component={CreateTripScreen} options={{ ...darkHeader, title: 'Trip Baru' }} />
-        <Stack.Screen name="EditTrip" component={EditTripScreen} options={{ ...darkHeader, title: 'Edit Trip' }} />
-        <Stack.Screen name="AddExpense" component={AddExpenseScreen} options={{ ...darkHeader, title: 'Tambah Pengeluaran' }} />
-        <Stack.Screen name="EditExpense" component={EditExpenseScreen} options={{ ...darkHeader, title: 'Edit Pengeluaran' }} />
-        <Stack.Screen name="InviteMember" component={InviteMemberScreen} options={{ ...darkHeader, title: 'Undang Anggota' }} />
-        <Stack.Screen name="MemberPermissions" component={MemberPermissionsScreen} options={{ ...darkHeader, title: 'Permissions' }} />
-        <Stack.Screen name="Settlement" component={SettlementScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Export" component={ExportScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="JoinTrip" component={JoinTripScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </ActiveTripProvider>
+    <ToastProvider>
+      <ActiveTripProvider>
+        <Stack.Navigator>
+          <Stack.Screen name="Main" component={MainTabs} options={{ headerShown: false }} />
+          <Stack.Screen name="TripDetail" component={TripDetailScreen} options={{ ...darkHeader, title: '' }} />
+          <Stack.Screen name="CreateTrip" component={CreateTripScreen} options={{ ...darkHeader, title: 'New Trip' }} />
+          <Stack.Screen name="EditTrip" component={EditTripScreen} options={{ ...darkHeader, title: 'Edit Trip' }} />
+          <Stack.Screen name="AddExpense" component={AddExpenseScreen} options={{ ...darkHeader, title: 'Add Expense' }} />
+          <Stack.Screen name="EditExpense" component={EditExpenseScreen} options={{ ...darkHeader, title: 'Edit Expense' }} />
+          <Stack.Screen name="InviteMember" component={InviteMemberScreen} options={{ ...darkHeader, title: 'Invite Member' }} />
+          <Stack.Screen name="MemberPermissions" component={MemberPermissionsScreen} options={{ ...darkHeader, title: 'Permissions' }} />
+          <Stack.Screen name="Settlement" component={SettlementScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Export" component={ExportScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="JoinTrip" component={JoinTripScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
+        </Stack.Navigator>
+      </ActiveTripProvider>
+    </ToastProvider>
   )
 }
 
