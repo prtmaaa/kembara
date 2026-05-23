@@ -24,6 +24,7 @@ import MemberPermissionsScreen from '../screens/trips/MemberPermissionsScreen'
 import ExpensesTabScreen from '../screens/expenses/ExpensesTabScreen'
 import ItineraryScreen from '../screens/itinerary/ItineraryScreen'
 import DiscoverScreen from '../screens/discover/DiscoverScreen'
+import SettlementScreen from '../screens/settlements/SettlementScreen'
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -116,6 +117,7 @@ function AppStack() {
         <Stack.Screen name="EditExpense" component={EditExpenseScreen} options={{ ...darkHeader, title: 'Edit Pengeluaran' }} />
         <Stack.Screen name="InviteMember" component={InviteMemberScreen} options={{ ...darkHeader, title: 'Undang Anggota' }} />
         <Stack.Screen name="MemberPermissions" component={MemberPermissionsScreen} options={{ ...darkHeader, title: 'Permissions' }} />
+        <Stack.Screen name="Settlement" component={SettlementScreen} options={{ headerShown: false }} />
         <Stack.Screen name="JoinTrip" component={JoinTripScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
