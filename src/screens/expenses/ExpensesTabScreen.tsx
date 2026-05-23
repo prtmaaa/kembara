@@ -8,6 +8,7 @@ import { useExpenses } from '../../hooks/useExpenses'
 import { useTrip } from '../../hooks/useTrip'
 import { colors } from '../../theme'
 import { useActiveTrip } from '../../context/ActiveTripContext'
+import { useTrips } from '../../hooks/useTrips'
 import Icon from '../../components/Icon'
 
 type CatFilter = 'all' | 'accommodation' | 'food' | 'transport' | 'activity' | 'shopping' | 'other'
@@ -52,8 +53,9 @@ function DonutRing({ pct }: { pct: number }) {
 
 export default function ExpensesTabScreen({ navigation, route }: any) {
   const { activeTripId } = useActiveTrip()
+  const { data: trips = [] } = useTrips()
   const paramTripId = route?.params?.tripId
-  const tripId = paramTripId ?? activeTripId
+  const tripId = paramTripId ?? activeTripId ?? trips[0]?.id
 
   const [filter, setFilter] = useState<CatFilter>('all')
 
@@ -86,8 +88,8 @@ export default function ExpensesTabScreen({ navigation, route }: any) {
         </SafeAreaView>
         <View style={styles.emptyWrap}>
           <Text style={styles.emptyEmoji}>🧾</Text>
-          <Text style={styles.emptyTitle}>Pilih trip dulu</Text>
-          <Text style={styles.emptySub}>Buka tab Home dan tap sebuah trip</Text>
+          <Text style={styles.emptyTitle}>No trips yet</Text>
+          <Text style={styles.emptySub}>Create a trip from the Home tab first</Text>
         </View>
       </View>
     )
@@ -145,7 +147,7 @@ export default function ExpensesTabScreen({ navigation, route }: any) {
       <ScrollView contentContainerStyle={styles.expList} showsVerticalScrollIndicator={false}>
         {filtered.length === 0 ? (
           <View style={styles.expEmpty}>
-            <Text style={styles.expEmptyText}>Belum ada pengeluaran</Text>
+            <Text style={styles.expEmptyText}>No expenses yet</Text>
           </View>
         ) : (
           filtered.map(exp => {

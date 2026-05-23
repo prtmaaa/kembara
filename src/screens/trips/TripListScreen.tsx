@@ -135,7 +135,7 @@ export default function TripListScreen({ navigation }: any) {
 
   useEffect(() => {
     if (trips[0]) setActiveTripId(trips[0].id)
-  }, [trips[0]?.id])
+  }, [trips[0]?.id, setActiveTripId])
 
   function getGreeting() {
     const h = new Date().getHours()
@@ -187,8 +187,8 @@ export default function TripListScreen({ navigation }: any) {
       ) : trips.length === 0 ? (
         <View style={styles.emptyWrap}>
           <Text style={styles.emptyEmoji}>✈️</Text>
-          <Text style={styles.emptyTitle}>Belum ada trip</Text>
-          <Text style={styles.emptySub}>Tekan tombol di bawah untuk memulai petualangan</Text>
+          <Text style={styles.emptyTitle}>No trips yet</Text>
+          <Text style={styles.emptySub}>Tap the button below to start a new adventure</Text>
         </View>
       ) : (
         <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -385,7 +385,7 @@ export default function TripListScreen({ navigation }: any) {
         activeOpacity={0.85}
       >
         <Icon name="plus" size={16} color="white" />
-        <Text style={styles.fabText}>Trip Baru</Text>
+        <Text style={styles.fabText}>New Trip</Text>
       </TouchableOpacity>
     </View>
   )
