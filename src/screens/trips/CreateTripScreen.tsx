@@ -9,6 +9,11 @@ import DateInput from '../../components/ui/DateInput'
 
 const CURRENCIES = ['IDR', 'USD', 'EUR', 'SGD', 'MYR', 'JPY', 'AUD', 'GBP', 'THB']
 
+function parseDateLocal(str: string): Date {
+  const [y, m, d] = str.split('-').map(Number)
+  return new Date(y, m - 1, d)
+}
+
 export default function CreateTripScreen({ navigation }: any) {
   const { profile } = useAuth()
   const createTrip = useCreateTrip()
@@ -75,7 +80,7 @@ export default function CreateTripScreen({ navigation }: any) {
         label="End Date (optional)"
         value={endDate}
         onChange={setEndDate}
-        minimumDate={startDate ? new Date(startDate) : undefined}
+        minimumDate={startDate ? parseDateLocal(startDate) : undefined}
       />
 
       <AppButton label="Create Trip" onPress={handleCreate} loading={createTrip.isPending} style={styles.btn} />

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useRef, useCallback, useEffect } from 'react'
 import type { ReactNode } from 'react'
-import { Animated, Text, StyleSheet } from 'react-native'
+import { Animated, Text, StyleSheet, View } from 'react-native'
 import { colors } from '../theme'
 
 type ToastType = 'success' | 'error'
@@ -44,12 +44,14 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 
   return (
     <ToastContext.Provider value={{ showToast }}>
-      {children}
-      {message ? (
-        <Animated.View style={[styles.toast, { opacity }, type === 'error' && styles.toastError]}>
-          <Text style={styles.toastText}>{message}</Text>
-        </Animated.View>
-      ) : null}
+      <View style={{ flex: 1 }}>
+        {children}
+        {message ? (
+          <Animated.View style={[styles.toast, { opacity }, type === 'error' && styles.toastError]}>
+            <Text style={styles.toastText}>{message}</Text>
+          </Animated.View>
+        ) : null}
+      </View>
     </ToastContext.Provider>
   )
 }

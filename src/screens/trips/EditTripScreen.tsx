@@ -11,6 +11,11 @@ import DateInput from '../../components/ui/DateInput'
 
 const CURRENCIES = ['IDR', 'USD', 'EUR', 'SGD', 'MYR', 'JPY', 'AUD', 'GBP', 'THB']
 
+function parseDateLocal(str: string): Date {
+  const [y, m, d] = str.split('-').map(Number)
+  return new Date(y, m - 1, d)
+}
+
 export default function EditTripScreen({ route, navigation }: any) {
   const { tripId } = route.params
   const { data: trip, isLoading } = useTrip(tripId)
@@ -91,7 +96,7 @@ export default function EditTripScreen({ route, navigation }: any) {
         label="End Date (optional)"
         value={endDate}
         onChange={setEndDate}
-        minimumDate={startDate ? new Date(startDate) : undefined}
+        minimumDate={startDate ? parseDateLocal(startDate) : undefined}
       />
 
       <AppButton label="Save Changes" onPress={handleSave} loading={updateTrip.isPending} style={styles.btn} />
