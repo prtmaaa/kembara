@@ -1,5 +1,5 @@
 import { calculateDebts } from '../utils/debtCalculator'
-import { Profile, Expense } from '../types'
+import { Profile, Expense, Settlement } from '../types'
 
 function makeProfile(id: string, name: string): Profile {
   return { id, full_name: name, email: `${id}@test.com`, avatar_url: null, created_at: '' }
@@ -27,6 +27,10 @@ function makeExpense(
     created_at: '',
     participants,
   } as any
+}
+
+function makeSettlement(fromId: string, toId: string, amount: number): Settlement {
+  return { id: 's1', trip_id: 'trip1', from_user_id: fromId, to_user_id: toId, amount, currency: 'IDR', settled_at: '' }
 }
 
 const alice = makeProfile('alice', 'Alice')
@@ -144,5 +148,39 @@ describe('calculateDebts', () => {
     expect(result).toHaveLength(1)
     expect(result[0].from.id).toBe('bob')
     expect(result[0].amount).toBeCloseTo(100)
+  })
+})
+
+describe('settlements offset debts', () => {
+  it('full settlement clears the debt', () => {
+    const expense = makeExpense('e1', 'alice', 100, [
+      { user_id: 'alice', share_amount: 50 },
+      { user_id: 'bob', share_amount: 50 },
+    ])
+    const settlement = makeSettlement('bob', 'alice', 50)
+    const result = calculateDebts([expense], [alice, bob], 'IDR', [settlement])
+    expect(result).toHaveLength(0)
+  })
+
+  it('partial settlement reduces remaining debt', () => {
+    const expense = makeExpense('e1', 'alice', 100, [
+      { user_id: 'alice', share_amount: 50 },
+      { user_id: 'bob', share_amount: 50 },
+    ])
+    const settlement = makeSettlement('bob', 'alice', 30)
+    const result = calculateDebts([expense], [alice, bob], 'IDR', [settlement])
+    expect(result).toHaveLength(1)
+    expect(result[0].from.id).toBe('bob')
+    expect(result[0].amount).toBeCloseTo(20)
+  })
+
+  it('no settlements leaves debts unchanged', () => {
+    const expense = makeExpense('e1', 'alice', 100, [
+      { user_id: 'alice', share_amount: 50 },
+      { user_id: 'bob', share_amount: 50 },
+    ])
+    const result = calculateDebts([expense], [alice, bob], 'IDR', [])
+    expect(result).toHaveLength(1)
+    expect(result[0].amount).toBeCloseTo(50)
   })
 })

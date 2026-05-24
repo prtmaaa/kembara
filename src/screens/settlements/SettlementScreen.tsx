@@ -25,8 +25,8 @@ export default function SettlementScreen({ route, navigation }: any) {
   const baseCurrency = trip?.base_currency ?? 'IDR'
 
   const debts = useMemo(
-    () => calculateDebts(expenses, members, baseCurrency),
-    [expenses, members, baseCurrency]
+    () => calculateDebts(expenses, members, baseCurrency, settlements),
+    [expenses, members, baseCurrency, settlements]
   )
 
   function confirmSettle(fromId: string, toId: string, amount: number, fromName: string, toName: string) {

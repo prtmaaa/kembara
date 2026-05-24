@@ -1,11 +1,12 @@
-import { ExpenseParticipant, Expense, Profile, DebtSummary } from '../types'
+import { Expense, Profile, DebtSummary, Settlement } from '../types'
 
 type Balance = { userId: string; amount: number }
 
 export function calculateDebts(
   expenses: Expense[],
   members: Profile[],
-  baseCurrency: string = 'IDR'
+  baseCurrency: string = 'IDR',
+  settlements: Settlement[] = []
 ): DebtSummary[] {
   const balances: Record<string, number> = {}
 
@@ -20,6 +21,11 @@ export function calculateDebts(
         balances[participant.user_id] -= participant.share_amount
       }
     }
+  }
+
+  for (const s of settlements) {
+    if (s.from_user_id in balances) balances[s.from_user_id] += s.amount
+    if (s.to_user_id in balances) balances[s.to_user_id] -= s.amount
   }
 
   const creditors: Balance[] = []
