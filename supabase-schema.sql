@@ -117,6 +117,8 @@ create policy "Authenticated users can create trips" on trips for insert
   with check (auth.uid() = created_by);
 create policy "Trip owner can update trip" on trips for update
   using (created_by = auth.uid());
+create policy "Trip owner can delete trip" on trips for delete
+  using (created_by = auth.uid());
 
 -- trip_members (uses helper function to avoid self-referential recursion)
 create policy "Trip members can view members" on trip_members for select
