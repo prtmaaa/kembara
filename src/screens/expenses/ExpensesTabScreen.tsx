@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
   View, Text, ScrollView, TouchableOpacity,
-  StyleSheet, ActivityIndicator, SafeAreaView,
+  StyleSheet, ActivityIndicator, SafeAreaView, Modal,
 } from 'react-native'
 import Svg, { Circle } from 'react-native-svg'
 import { useExpenses } from '../../hooks/useExpenses'
@@ -52,12 +52,13 @@ function DonutRing({ pct }: { pct: number }) {
 }
 
 export default function ExpensesTabScreen({ navigation, route }: any) {
-  const { activeTripId } = useActiveTrip()
+  const { activeTripId, setActiveTripId } = useActiveTrip()
   const { data: trips = [] } = useTrips()
   const paramTripId = route?.params?.tripId
   const tripId = paramTripId ?? activeTripId ?? trips[0]?.id
 
   const [filter, setFilter] = useState<CatFilter>('all')
+  const [showPicker, setShowPicker] = useState(false)
 
   const { data: trip, isLoading: tripLoading } = useTrip(tripId ?? '')
   const { data: expenses = [], isLoading: expLoading } = useExpenses(tripId ?? '')
@@ -101,7 +102,10 @@ export default function ExpensesTabScreen({ navigation, route }: any) {
       <SafeAreaView style={styles.safeHeader}>
         <View style={styles.screenHeader}>
           <Text style={styles.h1}>Expenses</Text>
-          <Text style={styles.sub}>{trip.name}</Text>
+          <TouchableOpacity style={styles.tripPicker} onPress={() => setShowPicker(true)} activeOpacity={0.7}>
+            <Text style={styles.sub}>{trip.name}</Text>
+            <Icon name="chevronR" size={12} color="rgba(255,255,255,0.4)" />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.headerExt}>
@@ -187,6 +191,30 @@ export default function ExpensesTabScreen({ navigation, route }: any) {
         <Icon name="plus" size={16} color="white" />
         <Text style={styles.fabText}>Add Expense</Text>
       </TouchableOpacity>
+
+      {/* Trip picker modal */}
+      <Modal visible={showPicker} transparent animationType="slide" onRequestClose={() => setShowPicker(false)}>
+        <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setShowPicker(false)}>
+          <View style={styles.modalSheet}>
+            <View style={styles.modalHandle} />
+            <Text style={styles.modalTitle}>Switch Trip</Text>
+            {trips.map((t) => (
+              <TouchableOpacity
+                key={t.id}
+                style={styles.tripRow}
+                onPress={() => { setActiveTripId(t.id); setShowPicker(false) }}
+              >
+                <View style={styles.tripRowInfo}>
+                  <Text style={styles.tripRowName}>{t.name}</Text>
+                  <Text style={styles.tripRowDest}>{t.destination}</Text>
+                </View>
+                {t.id === tripId && <Icon name="check" size={16} color={colors.ocean} />}
+              </TouchableOpacity>
+            ))}
+            <View style={{ height: 20 }} />
+          </View>
+        </TouchableOpacity>
+      </Modal>
     </View>
   )
 }
@@ -202,6 +230,24 @@ const styles = StyleSheet.create({
   },
   h1: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 32, color: colors.white, lineHeight: 36 },
   sub: { fontFamily: 'DMSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
+  tripPicker: { flexDirection: 'row', alignItems: 'center', gap: 4, alignSelf: 'flex-start' },
+  modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
+  modalSheet: {
+    backgroundColor: colors.white, borderTopLeftRadius: 24, borderTopRightRadius: 24,
+    paddingHorizontal: 20, paddingTop: 12,
+  },
+  modalHandle: {
+    width: 36, height: 4, borderRadius: 2, backgroundColor: colors.border,
+    alignSelf: 'center', marginBottom: 16,
+  },
+  modalTitle: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 22, color: colors.text, marginBottom: 12 },
+  tripRow: {
+    flexDirection: 'row', alignItems: 'center', paddingVertical: 14,
+    borderTopWidth: 1, borderTopColor: colors.border,
+  },
+  tripRowInfo: { flex: 1 },
+  tripRowName: { fontFamily: 'DMSans_600SemiBold', fontSize: 15, color: colors.text },
+  tripRowDest: { fontFamily: 'DMSans_400Regular', fontSize: 12, color: colors.muted, marginTop: 2 },
 
   headerExt: {
     backgroundColor: colors.night,

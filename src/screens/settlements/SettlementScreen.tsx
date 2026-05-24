@@ -68,8 +68,16 @@ export default function SettlementScreen({ route, navigation }: any) {
           {debts.length === 0 ? (
             <View style={styles.allClear}>
               <Icon name="heart" size={24} color={colors.forest} />
-              <Text style={styles.allClearTitle}>All settled up!</Text>
-              <Text style={styles.allClearSub}>No outstanding debts for this trip</Text>
+              {expenses.length === 0
+                ? <Text style={styles.allClearTitle}>No expenses yet</Text>
+                : <Text style={styles.allClearTitle}>All settled up!</Text>
+              }
+              <Text style={styles.allClearSub}>
+                {expenses.length === 0
+                  ? 'Add expenses to calculate who owes what'
+                  : 'No outstanding debts for this trip'
+                }
+              </Text>
             </View>
           ) : (
             debts.map((debt, i) => {

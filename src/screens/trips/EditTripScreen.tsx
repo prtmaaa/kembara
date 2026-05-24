@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import {
-  View, Text, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator,
+  View, Text, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator, Alert,
 } from 'react-native'
 import { useTrip } from '../../hooks/useTrip'
-import { useUpdateTrip } from '../../hooks/useTrips'
+import { useUpdateTrip, useDeleteTrip } from '../../hooks/useTrips'
 import { colors } from '../../theme'
 import AppButton from '../../components/ui/AppButton'
 import AppInput from '../../components/ui/AppInput'
@@ -20,6 +20,7 @@ export default function EditTripScreen({ route, navigation }: any) {
   const { tripId } = route.params
   const { data: trip, isLoading } = useTrip(tripId)
   const updateTrip = useUpdateTrip()
+  const deleteTrip = useDeleteTrip()
   const [name, setName] = useState('')
   const [destination, setDestination] = useState('')
   const [baseCurrency, setBaseCurrency] = useState('IDR')
@@ -61,6 +62,27 @@ export default function EditTripScreen({ route, navigation }: any) {
     }
   }
 
+  function handleDelete() {
+    Alert.alert(
+      'Delete Trip',
+      `Delete "${trip?.name}"? This will also delete all expenses and members. This cannot be undone.`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete', style: 'destructive',
+          onPress: async () => {
+            try {
+              await deleteTrip.mutateAsync(tripId)
+              navigation.popToTop()
+            } catch (e: any) {
+              Alert.alert('Error', e.message ?? 'Could not delete trip')
+            }
+          },
+        },
+      ]
+    )
+  }
+
   if (isLoading) {
     return <View style={styles.loader}><ActivityIndicator color={colors.ocean} size="large" /></View>
   }
@@ -100,6 +122,7 @@ export default function EditTripScreen({ route, navigation }: any) {
       />
 
       <AppButton label="Save Changes" onPress={handleSave} loading={updateTrip.isPending} style={styles.btn} />
+      <AppButton label="Delete Trip" variant="danger" onPress={handleDelete} loading={deleteTrip.isPending} style={{ marginTop: 8, marginBottom: 40 }} />
     </ScrollView>
   )
 }
