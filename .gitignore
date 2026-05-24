@@ -37,6 +37,10 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# tooling artifacts
+.playwright-mcp/
+docs/superpowers/
+
 # generated native folders
 /ios
 /android
