@@ -58,6 +58,14 @@ export default function JoinTripScreen({ route, navigation }: any) {
     navigation.reset({ index: 0, routes: [{ name: 'Main' }] })
   }
 
+  if (!profile) return (
+    <View style={styles.center}>
+      <Text style={styles.errorTitle}>Sign in first</Text>
+      <Text style={styles.errorSub}>You need to be signed in to join a trip.</Text>
+      <AppButton label="Sign In" onPress={() => navigation.navigate('Main')} style={{ marginTop: 24 }} />
+    </View>
+  )
+
   if (loading) return <View style={styles.center}><ActivityIndicator color={colors.ocean} size="large" /></View>
 
   if (error) return (

@@ -122,7 +122,6 @@ function AppStack() {
           <Stack.Screen name="MemberPermissions" component={MemberPermissionsScreen} options={{ ...darkHeader, title: 'Permissions' }} />
           <Stack.Screen name="Settlement" component={SettlementScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Export" component={ExportScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="JoinTrip" component={JoinTripScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
       </ActiveTripProvider>
@@ -139,16 +138,7 @@ function AuthStack() {
   )
 }
 
-const linking = {
-  prefixes: ['kembara://'],
-  config: {
-    screens: {
-      JoinTrip: 'join/:token',
-    },
-  },
-}
-
-export default function AppNavigator() {
+function RootNavigator() {
   const { session, loading } = useAuth()
 
   if (loading) {
@@ -160,8 +150,26 @@ export default function AppNavigator() {
   }
 
   return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Main" component={session ? AppStack : AuthStack} />
+      <Stack.Screen name="JoinTrip" component={JoinTripScreen} />
+    </Stack.Navigator>
+  )
+}
+
+const linking = {
+  prefixes: ['kembara://'],
+  config: {
+    screens: {
+      JoinTrip: 'join/:token',
+    },
+  },
+}
+
+export default function AppNavigator() {
+  return (
     <NavigationContainer linking={linking}>
-      {session ? <AppStack /> : <AuthStack />}
+      <RootNavigator />
     </NavigationContainer>
   )
 }
