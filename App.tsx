@@ -9,6 +9,11 @@ import {
   PlusJakartaSans_700Bold,
   PlusJakartaSans_800ExtraBold,
 } from '@expo-google-fonts/plus-jakarta-sans'
+import {
+  Fraunces_600SemiBold,
+  Fraunces_700Bold,
+  Fraunces_900Black,
+} from '@expo-google-fonts/fraunces'
 import AppNavigator from './src/navigation/AppNavigator'
 import QueryProvider from './src/providers/QueryProvider'
 import { colors } from './src/theme'
@@ -20,6 +25,9 @@ export default function App() {
     PlusJakartaSans_600SemiBold,
     PlusJakartaSans_700Bold,
     PlusJakartaSans_800ExtraBold,
+    Fraunces_600SemiBold,
+    Fraunces_700Bold,
+    Fraunces_900Black,
   })
 
   if (!fontsLoaded) {

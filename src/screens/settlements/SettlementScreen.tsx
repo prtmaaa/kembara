@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   safeHeader: { backgroundColor: colors.night },
   header: { backgroundColor: colors.night, paddingHorizontal: 22, paddingTop: 12, paddingBottom: 20 },
   backBtn: { marginBottom: 8, alignSelf: 'flex-start' },
-  h1: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 32, color: colors.white },
+  h1: { fontFamily: 'Fraunces_700Bold', fontSize: 32, color: colors.white },
   sub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
   content: { padding: 18, gap: 24 },
   section: { gap: 12 },
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.forestSoft, borderRadius: 16,
     padding: 24, alignItems: 'center', gap: 8,
   },
-  allClearTitle: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 22, color: colors.forest },
+  allClearTitle: { fontFamily: 'Fraunces_600SemiBold', fontSize: 22, color: colors.forest },
   allClearSub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: colors.forest },
   debtCard: {
     backgroundColor: colors.white, borderRadius: 16, padding: 16, gap: 14,

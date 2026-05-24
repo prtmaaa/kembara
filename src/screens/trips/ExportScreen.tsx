@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   safeHeader: { backgroundColor: colors.night },
   header: { backgroundColor: colors.night, paddingHorizontal: 22, paddingTop: 12, paddingBottom: 20 },
   backBtn: { marginBottom: 8, alignSelf: 'flex-start' },
-  h1: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 32, color: colors.white },
+  h1: { fontFamily: 'Fraunces_700Bold', fontSize: 32, color: colors.white },
   sub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
   scroll: { padding: 18, gap: 18 },
 
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   },
   cardHeader: { padding: 24, gap: 4 },
   cardBrand: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 10, color: 'rgba(255,255,255,0.5)', letterSpacing: 2 },
-  cardTripName: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 28, color: colors.white, lineHeight: 30 },
+  cardTripName: { fontFamily: 'Fraunces_700Bold', fontSize: 28, color: colors.white, lineHeight: 30 },
   cardDest: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 11, color: 'rgba(255,255,255,0.6)', letterSpacing: 1.5 },
   cardDates: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 4 },
 

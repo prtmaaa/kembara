@@ -407,7 +407,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.2, marginBottom: 3,
   },
   headerTitle: {
-    fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 28,
+    fontFamily: 'Fraunces_700Bold', fontSize: 28,
     color: colors.white, lineHeight: 30,
   },
   avatar: {
@@ -419,7 +419,7 @@ const styles = StyleSheet.create({
   loader: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   emptyWrap: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 80 },
   emptyEmoji: { fontSize: 52, marginBottom: 14 },
-  emptyTitle: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 26, color: colors.text },
+  emptyTitle: { fontFamily: 'Fraunces_600SemiBold', fontSize: 26, color: colors.text },
   emptySub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 14, color: colors.muted, marginTop: 6, textAlign: 'center', paddingHorizontal: 40 },
 
   content: { padding: 18, gap: 18 },
@@ -444,7 +444,7 @@ const styles = StyleSheet.create({
     color: 'rgba(180,215,240,0.85)', letterSpacing: 1.2, marginBottom: 4,
   },
   heroName: {
-    fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 34,
+    fontFamily: 'Fraunces_700Bold', fontSize: 34,
     color: colors.white, lineHeight: 36, letterSpacing: -0.3,
   },
   heroDates: {

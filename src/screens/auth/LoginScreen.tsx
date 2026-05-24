@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.cream },
   inner: { flexGrow: 1, justifyContent: 'center', padding: 28 },
   header: { alignItems: 'center', marginBottom: 40 },
-  logo: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 40, color: colors.night, letterSpacing: 3 },
+  logo: { fontFamily: 'Fraunces_900Black', fontSize: 36, color: colors.night, letterSpacing: 2 },
   tagline: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 14, color: colors.muted, marginTop: 6 },
   form: { gap: 16 },
   btn: { marginTop: 4 },

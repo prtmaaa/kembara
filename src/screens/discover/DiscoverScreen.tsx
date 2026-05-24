@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.night,
     paddingHorizontal: 22, paddingTop: 12, paddingBottom: 0,
   },
-  h1: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 32, color: colors.white, lineHeight: 36 },
+  h1: { fontFamily: 'Fraunces_700Bold', fontSize: 32, color: colors.white, lineHeight: 36 },
   sub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
 
   searchBar: { backgroundColor: colors.night, paddingHorizontal: 18, paddingTop: 14, paddingBottom: 18 },

@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     padding: 28, alignItems: 'center', width: 300,
   },
   modalTitle: {
-    fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 26, color: colors.text,
+    fontFamily: 'Fraunces_700Bold', fontSize: 26, color: colors.text,
     marginBottom: 4,
   },
   modalSub: {

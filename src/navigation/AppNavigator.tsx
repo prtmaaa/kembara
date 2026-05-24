@@ -100,8 +100,8 @@ const darkHeader = {
   headerStyle: { backgroundColor: colors.night },
   headerTintColor: colors.white,
   headerTitleStyle: {
-    fontFamily: 'PlusJakartaSans_800ExtraBold',
-    fontSize: 20, color: colors.white,
+    fontFamily: 'PlusJakartaSans_600SemiBold',
+    fontSize: 16, color: colors.white,
   },
   headerShadowVisible: false,
   headerRight: () => <HeaderUser light />,

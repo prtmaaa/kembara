@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.night,
     paddingHorizontal: 22, paddingTop: 12, paddingBottom: 16,
   },
-  h1: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 32, color: colors.white, lineHeight: 36 },
+  h1: { fontFamily: 'Fraunces_700Bold', fontSize: 32, color: colors.white, lineHeight: 36 },
   sub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
 
   daySelector: { backgroundColor: colors.night },
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   dayLblInactive: { color: 'rgba(130,140,160,0.8)' },
 
   timeline: { paddingHorizontal: 18, paddingTop: 20, paddingBottom: 90 },
-  dayLabel: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 22, color: colors.text, marginBottom: 20 },
+  dayLabel: { fontFamily: 'PlusJakartaSans_700Bold', fontSize: 22, color: colors.text, marginBottom: 20 },
 
   tlItem: { flexDirection: 'row', alignItems: 'stretch' },
   tlLeft: { width: 52, flexShrink: 0, alignItems: 'center' },

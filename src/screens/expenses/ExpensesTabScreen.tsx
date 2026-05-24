@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.night,
     paddingHorizontal: 22, paddingTop: 12, paddingBottom: 0,
   },
-  h1: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 32, color: colors.white, lineHeight: 36 },
+  h1: { fontFamily: 'Fraunces_700Bold', fontSize: 32, color: colors.white, lineHeight: 36 },
   sub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
   tripPicker: { flexDirection: 'row', alignItems: 'center', gap: 4, alignSelf: 'flex-start' },
   modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.4)' },
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     width: 36, height: 4, borderRadius: 2, backgroundColor: colors.border,
     alignSelf: 'center', marginBottom: 16,
   },
-  modalTitle: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 22, color: colors.text, marginBottom: 12 },
+  modalTitle: { fontFamily: 'PlusJakartaSans_700Bold', fontSize: 22, color: colors.text, marginBottom: 12 },
   tripRow: {
     flexDirection: 'row', alignItems: 'center', paddingVertical: 14,
     borderTopWidth: 1, borderTopColor: colors.border,
@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
 
   emptyWrap: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 80 },
   emptyEmoji: { fontSize: 48, marginBottom: 14 },
-  emptyTitle: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 24, color: colors.text },
+  emptyTitle: { fontFamily: 'Fraunces_600SemiBold', fontSize: 24, color: colors.text },
   emptySub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 14, color: colors.muted, marginTop: 6 },
 
   fab: {
