@@ -178,8 +178,8 @@ const styles = StyleSheet.create({
   safeHeader: { backgroundColor: colors.night },
   header: { backgroundColor: colors.night, paddingHorizontal: 22, paddingTop: 12, paddingBottom: 20 },
   backBtn: { marginBottom: 8, alignSelf: 'flex-start' },
-  h1: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 32, color: colors.white },
-  sub: { fontFamily: 'DMSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
+  h1: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 32, color: colors.white },
+  sub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
   scroll: { padding: 18, gap: 18 },
 
   card: {
@@ -188,39 +188,39 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15, shadowRadius: 12, elevation: 8,
   },
   cardHeader: { padding: 24, gap: 4 },
-  cardBrand: { fontFamily: 'DMSans_600SemiBold', fontSize: 10, color: 'rgba(255,255,255,0.5)', letterSpacing: 2 },
-  cardTripName: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 28, color: colors.white, lineHeight: 30 },
-  cardDest: { fontFamily: 'DMSans_500Medium', fontSize: 11, color: 'rgba(255,255,255,0.6)', letterSpacing: 1.5 },
-  cardDates: { fontFamily: 'DMSans_400Regular', fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 4 },
+  cardBrand: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 10, color: 'rgba(255,255,255,0.5)', letterSpacing: 2 },
+  cardTripName: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 28, color: colors.white, lineHeight: 30 },
+  cardDest: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 11, color: 'rgba(255,255,255,0.6)', letterSpacing: 1.5 },
+  cardDates: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 4 },
 
   cardSection: { padding: 16, borderBottomWidth: 1, borderBottomColor: colors.border, gap: 8 },
   cardSectionLast: { borderBottomWidth: 0 },
   cardSectionLabel: {
-    fontFamily: 'DMSans_600SemiBold', fontSize: 10, color: colors.muted,
+    fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 10, color: colors.muted,
     letterSpacing: 1.2, textTransform: 'uppercase',
   },
 
-  cardTotal: { fontFamily: 'DMSans_600SemiBold', fontSize: 28, color: colors.text },
-  cardMeta: { fontFamily: 'DMSans_400Regular', fontSize: 12, color: colors.muted },
+  cardTotal: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 28, color: colors.text },
+  cardMeta: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 12, color: colors.muted },
 
   catRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  catName: { fontFamily: 'DMSans_500Medium', fontSize: 12, color: colors.text, width: 80 },
+  catName: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 12, color: colors.text, width: 80 },
   catBarWrap: { flex: 1, height: 4, backgroundColor: colors.sand, borderRadius: 100 },
   catBar: { height: '100%' as any, borderRadius: 100 },
-  catAmt: { fontFamily: 'DMSans_500Medium', fontSize: 12, color: colors.muted, width: 36, textAlign: 'right' },
+  catAmt: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 12, color: colors.muted, width: 36, textAlign: 'right' },
 
   memberRow: { flexDirection: 'row', justifyContent: 'space-between' },
-  memberName: { fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
-  memberPaid: { fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: colors.text },
+  memberName: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 13, color: colors.text },
+  memberPaid: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 13, color: colors.text },
 
   debtRow: { flexDirection: 'row', alignItems: 'center' },
-  debtFrom: { fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: colors.text },
-  debtArrow: { fontFamily: 'DMSans_400Regular', fontSize: 12, color: colors.muted },
-  debtTo: { fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: colors.text, flex: 1 },
-  debtAmt: { fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: colors.sunset },
+  debtFrom: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 13, color: colors.text },
+  debtArrow: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 12, color: colors.muted },
+  debtTo: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 13, color: colors.text, flex: 1 },
+  debtAmt: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 13, color: colors.sunset },
 
   allClearSection: { alignItems: 'center' },
-  allClearText: { fontFamily: 'DMSans_600SemiBold', fontSize: 14, color: colors.forest },
+  allClearText: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 14, color: colors.forest },
 
   shareBtn: {
     backgroundColor: colors.sunset, borderRadius: 100,
@@ -228,5 +228,5 @@ const styles = StyleSheet.create({
     shadowColor: colors.sunset, shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.45, shadowRadius: 16, elevation: 8,
   },
-  shareBtnText: { fontFamily: 'DMSans_600SemiBold', fontSize: 15, color: colors.white },
+  shareBtnText: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 15, color: colors.white },
 })

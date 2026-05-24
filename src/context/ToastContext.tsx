@@ -66,5 +66,5 @@ const styles = StyleSheet.create({
     zIndex: 999,
   },
   toastError: { backgroundColor: '#E53935' },
-  toastText: { fontFamily: 'DMSans_500Medium', fontSize: 14, color: colors.white },
+  toastText: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 14, color: colors.white },
 })

@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   iconBox: { width: 28, height: 28, borderRadius: 8, justifyContent: 'center', alignItems: 'center', marginBottom: 6 },
-  value: { fontFamily: 'DMSans_600SemiBold', fontSize: 20, color: colors.text, lineHeight: 22 },
-  label: { fontFamily: 'DMSans_400Regular', fontSize: 11, color: colors.muted, marginTop: 2 },
+  value: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 20, color: colors.text, lineHeight: 22 },
+  label: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 11, color: colors.muted, marginTop: 2 },
 })

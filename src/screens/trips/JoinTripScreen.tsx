@@ -87,10 +87,10 @@ export default function JoinTripScreen({ route, navigation }: any) {
 
 const styles = StyleSheet.create({
   center: { flex: 1, backgroundColor: colors.cream, justifyContent: 'center', alignItems: 'center', padding: 28 },
-  label: { fontFamily: 'DMSans_400Regular', fontSize: 14, color: colors.muted, marginBottom: 8 },
-  tripName: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 36, color: colors.text, textAlign: 'center' },
-  destination: { fontFamily: 'DMSans_400Regular', fontSize: 14, color: colors.muted, marginTop: 6 },
-  alreadyText: { fontFamily: 'DMSans_400Regular', fontSize: 14, color: colors.muted, marginTop: 16, textAlign: 'center' },
-  errorTitle: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 28, color: colors.text, marginBottom: 8 },
-  errorSub: { fontFamily: 'DMSans_400Regular', fontSize: 14, color: colors.muted, textAlign: 'center' },
+  label: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 14, color: colors.muted, marginBottom: 8 },
+  tripName: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 36, color: colors.text, textAlign: 'center' },
+  destination: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 14, color: colors.muted, marginTop: 6 },
+  alreadyText: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 14, color: colors.muted, marginTop: 16, textAlign: 'center' },
+  errorTitle: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 28, color: colors.text, marginBottom: 8 },
+  errorSub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 14, color: colors.muted, textAlign: 'center' },
 })

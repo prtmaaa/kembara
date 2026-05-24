@@ -91,12 +91,12 @@ export default function CreateTripScreen({ navigation }: any) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.cream },
   content: { padding: 20, gap: 12 },
-  label: { fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
+  label: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 13, color: colors.text },
   currencyRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   chip: { borderWidth: 1, borderColor: colors.border, borderRadius: 20, paddingVertical: 6, paddingHorizontal: 14 },
   chipActive: { backgroundColor: colors.night, borderColor: colors.ocean },
-  chipText: { fontFamily: 'DMSans_400Regular', color: colors.text, fontSize: 13 },
+  chipText: { fontFamily: 'PlusJakartaSans_400Regular', color: colors.text, fontSize: 13 },
   chipTextActive: { color: colors.white },
   btn: { marginTop: 8 },
-  error: { fontFamily: 'DMSans_400Regular', color: colors.sunset, fontSize: 13 },
+  error: { fontFamily: 'PlusJakartaSans_400Regular', color: colors.sunset, fontSize: 13 },
 })

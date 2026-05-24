@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  label: { fontFamily: 'DMSans_600SemiBold', fontSize: 14 },
+  label: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 14 },
   disabled: { opacity: 0.5 },
 })

@@ -141,8 +141,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.night,
     paddingHorizontal: 22, paddingTop: 12, paddingBottom: 0,
   },
-  h1: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 32, color: colors.white, lineHeight: 36 },
-  sub: { fontFamily: 'DMSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
+  h1: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 32, color: colors.white, lineHeight: 36 },
+  sub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
 
   searchBar: { backgroundColor: colors.night, paddingHorizontal: 18, paddingTop: 14, paddingBottom: 18 },
   searchWrap: {
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     paddingVertical: 11, paddingHorizontal: 14,
   },
   searchInput: {
-    flex: 1, fontFamily: 'DMSans_400Regular', fontSize: 14, color: colors.white,
+    flex: 1, fontFamily: 'PlusJakartaSans_400Regular', fontSize: 14, color: colors.white,
   },
 
   catScroll: { backgroundColor: colors.cream },
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   pill: { borderRadius: 100, paddingVertical: 5, paddingHorizontal: 12 },
   pillActive: { backgroundColor: colors.night },
   pillInactive: { backgroundColor: colors.sand },
-  pillText: { fontFamily: 'DMSans_500Medium', fontSize: 12 },
+  pillText: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 12 },
   pillTextActive: { color: colors.white },
   pillTextInactive: { color: colors.muted },
 
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   thumb: { height: 100, position: 'relative', justifyContent: 'center', alignItems: 'center' },
   thumbStripes: { ...StyleSheet.absoluteFillObject, opacity: 0.12 },
   thumbLabel: {
-    fontFamily: 'DMSans_400Regular', fontSize: 9, color: 'rgba(0,0,0,0.5)',
+    fontFamily: 'PlusJakartaSans_400Regular', fontSize: 9, color: 'rgba(0,0,0,0.5)',
     letterSpacing: 1,
   },
   saveBtn: {
@@ -184,13 +184,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center', alignItems: 'center',
   },
   placeInfo: { padding: 11 },
-  placeName: { fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: colors.text, lineHeight: 17, marginBottom: 6 },
+  placeName: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 13, color: colors.text, lineHeight: 17, marginBottom: 6 },
   placeTags: { flexDirection: 'row', flexWrap: 'wrap', gap: 4, marginBottom: 6 },
   placeTag: { backgroundColor: colors.sand, borderRadius: 100, paddingVertical: 2, paddingHorizontal: 7 },
-  placeTagText: { fontFamily: 'DMSans_400Regular', fontSize: 10, color: colors.muted },
+  placeTagText: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 10, color: colors.muted },
   placeMeta: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   placeDist: { flexDirection: 'row', alignItems: 'center', gap: 3 },
-  placeDistText: { fontFamily: 'DMSans_400Regular', fontSize: 11, color: colors.muted },
+  placeDistText: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 11, color: colors.muted },
   placeRating: { flexDirection: 'row', alignItems: 'center', gap: 3 },
-  placeRatingText: { fontFamily: 'DMSans_600SemiBold', fontSize: 12, color: colors.text },
+  placeRatingText: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 12, color: colors.text },
 })

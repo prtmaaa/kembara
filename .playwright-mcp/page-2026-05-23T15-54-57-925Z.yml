@@ -1,0 +1,241 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - button "Navigate to home" [ref=e6] [cursor=pointer]:
+          - img "Expo home" [ref=e7]
+        - generic [ref=e9]:
+          - link "Docs" [ref=e10] [cursor=pointer]:
+            - /url: https://docs.expo.dev
+          - link "Product" [ref=e11] [cursor=pointer]:
+            - /url: /services
+            - generic [ref=e13]: Product
+            - img [ref=e14]
+          - button "Solutions" [ref=e17] [cursor=pointer]:
+            - generic [ref=e19]: Solutions
+            - img [ref=e20]
+          - link "Enterprise" [ref=e23] [cursor=pointer]:
+            - /url: /solutions/enterprise
+          - link "Pricing" [ref=e24] [cursor=pointer]:
+            - /url: /pricing
+          - link "Blog" [ref=e25] [cursor=pointer]:
+            - /url: /blog
+      - generic [ref=e27]:
+        - link "Star us on GitHub" [ref=e28] [cursor=pointer]:
+          - /url: https://github.com/expo/expo
+          - img [ref=e29]
+          - generic [ref=e33]: 48.2K
+        - generic [ref=e34]:
+          - link "Log in" [ref=e35] [cursor=pointer]:
+            - /url: /login
+            - generic [ref=e37]: Log in
+          - link "Sign up" [ref=e38] [cursor=pointer]:
+            - /url: /signup
+            - generic [ref=e40]: Sign up
+  - generic [ref=e42]:
+    - heading "Log in to Expo New to Expo? Sign up" [level=1] [ref=e43]:
+      - text: Log in to Expo
+      - generic [ref=e44]:
+        - paragraph [ref=e45]: New to Expo?
+        - link "Sign up" [ref=e46] [cursor=pointer]:
+          - /url: /signup
+          - generic [ref=e48]: Sign up
+          - img [ref=e49]
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - generic [ref=e60]: Email or username
+        - textbox [ref=e63]
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - generic [ref=e68]: Password
+          - link "Forgot password?" [ref=e70] [cursor=pointer]:
+            - /url: /reset-password
+        - generic [ref=e73]:
+          - textbox "Password" [ref=e74]
+          - button "Show password" [ref=e76] [cursor=pointer]:
+            - img [ref=e77]
+      - button "Log in" [ref=e83] [cursor=pointer]:
+        - generic [ref=e85]: Log in
+      - paragraph [ref=e86]: or
+      - button "Continue with Google" [ref=e88] [cursor=pointer]:
+        - img [ref=e89]
+        - generic [ref=e96]: Continue with Google
+      - button "Continue with GitHub" [ref=e97] [cursor=pointer]:
+        - img [ref=e98]
+        - generic [ref=e102]: Continue with GitHub
+      - button "Continue with Apple" [ref=e103] [cursor=pointer]:
+        - img [ref=e104]
+        - generic [ref=e108]: Continue with Apple
+      - link "Continue with SSO" [ref=e109] [cursor=pointer]:
+        - /url: /sso-login
+        - generic [ref=e111]: Continue with SSO
+        - img [ref=e112]
+  - contentinfo [ref=e115]:
+    - generic [ref=e116]:
+      - heading "Site Footer" [level=2] [ref=e117]
+      - navigation "Expo Directory" [ref=e118]:
+        - generic [ref=e119]:
+          - link "Expo" [ref=e120] [cursor=pointer]:
+            - /url: /
+            - img "Expo"
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - paragraph [ref=e124]: Newsletter
+              - paragraph [ref=e126]: Stay in touch with all things Expo
+            - button "Subscribe" [ref=e127] [cursor=pointer]:
+              - generic [ref=e129]: Subscribe
+        - generic [ref=e130]:
+          - generic [ref=e131]:
+            - heading "Product" [level=3] [ref=e132]
+            - list [ref=e133]:
+              - listitem [ref=e134]:
+                - link "Star us on GitHub" [ref=e135] [cursor=pointer]:
+                  - /url: https://github.com/expo/expo
+              - listitem [ref=e136]:
+                - link "Expo CLI on GitHub" [ref=e137] [cursor=pointer]:
+                  - /url: https://github.com/expo/expo/tree/main/packages/%40expo/cli
+              - listitem [ref=e138]:
+                - link "Expo Services (EAS)" [ref=e139] [cursor=pointer]:
+                  - /url: /services
+              - listitem [ref=e140]:
+                - link "EAS CLI on GitHub" [ref=e141] [cursor=pointer]:
+                  - /url: https://github.com/expo/eas-cli
+              - listitem [ref=e142]:
+                - link "Expo Go" [ref=e143] [cursor=pointer]:
+                  - /url: /go
+              - listitem [ref=e144]:
+                - link "Expo Orbit" [ref=e145] [cursor=pointer]:
+                  - /url: /orbit
+              - listitem [ref=e146]:
+                - link "Snack" [ref=e147] [cursor=pointer]:
+                  - /url: https://snack.expo.dev
+          - generic [ref=e148]:
+            - heading "Resources" [level=3] [ref=e149]
+            - list [ref=e150]:
+              - listitem [ref=e151]:
+                - link "Documentation" [ref=e152] [cursor=pointer]:
+                  - /url: https://docs.expo.dev/
+              - listitem [ref=e153]:
+                - link "Blog" [ref=e154] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e155]:
+                - link "Changelog" [ref=e156] [cursor=pointer]:
+                  - /url: /changelog
+              - listitem [ref=e157]:
+                - link "Support" [ref=e158] [cursor=pointer]:
+                  - /url: /support
+              - listitem [ref=e159]:
+                - link "Trust Center" [ref=e160] [cursor=pointer]:
+                  - /url: /trust
+              - listitem [ref=e161]:
+                - link "Join Discord" [ref=e162] [cursor=pointer]:
+                  - /url: https://chat.expo.dev
+          - generic [ref=e163]:
+            - heading "Solutions" [level=3] [ref=e164]
+            - list [ref=e165]:
+              - listitem [ref=e166]:
+                - link "Enterprise" [ref=e167] [cursor=pointer]:
+                  - /url: /solutions/enterprise
+              - listitem [ref=e168]:
+                - link "Startup" [ref=e169] [cursor=pointer]:
+                  - /url: /solutions/startups
+              - listitem [ref=e170]:
+                - link "Solo devs" [ref=e171] [cursor=pointer]:
+                  - /url: /solutions/solo-devs
+              - listitem [ref=e172]:
+                - link "React web devs" [ref=e173] [cursor=pointer]:
+                  - /url: /solutions/expo-for-react-web-devs
+              - listitem [ref=e174]:
+                - link "E-commerce" [ref=e175] [cursor=pointer]:
+                  - /url: /solutions/ecom
+              - listitem [ref=e176]:
+                - link "Crypto" [ref=e177] [cursor=pointer]:
+                  - /url: /solutions/crypto
+              - listitem [ref=e178]:
+                - link "Finserv" [ref=e179] [cursor=pointer]:
+                  - /url: /solutions/financial-services
+              - listitem [ref=e180]:
+                - link "QSR" [ref=e181] [cursor=pointer]:
+                  - /url: /solutions/qsr
+          - generic [ref=e182]:
+            - heading "Company" [level=3] [ref=e183]
+            - list [ref=e184]:
+              - listitem [ref=e185]:
+                - link "Home" [ref=e186] [cursor=pointer]:
+                  - /url: /home
+              - listitem [ref=e187]:
+                - link "Pricing" [ref=e188] [cursor=pointer]:
+                  - /url: /pricing
+              - listitem [ref=e189]:
+                - link "Customers" [ref=e190] [cursor=pointer]:
+                  - /url: /customers
+              - listitem [ref=e191]:
+                - link "Consultants" [ref=e192] [cursor=pointer]:
+                  - /url: /consultants
+              - listitem [ref=e193]:
+                - link "About" [ref=e194] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e195]:
+                - link "Branding" [ref=e196] [cursor=pointer]:
+                  - /url: /brand
+              - listitem [ref=e197]:
+                - link "Careers" [ref=e198] [cursor=pointer]:
+                  - /url: /careers
+          - generic [ref=e199]:
+            - heading "Legal" [level=3] [ref=e200]
+            - list [ref=e201]:
+              - listitem [ref=e202]:
+                - link "Terms of service" [ref=e203] [cursor=pointer]:
+                  - /url: /terms
+              - listitem [ref=e204]:
+                - link "Acceptable use policy" [ref=e205] [cursor=pointer]:
+                  - /url: /acceptable-use
+              - listitem [ref=e206]:
+                - link "Privacy policy" [ref=e207] [cursor=pointer]:
+                  - /url: /privacy
+              - listitem [ref=e208]:
+                - link "Privacy explained" [ref=e209] [cursor=pointer]:
+                  - /url: /privacy-explained
+              - listitem [ref=e210]:
+                - link "Cookie policy" [ref=e211] [cursor=pointer]:
+                  - /url: /privacy/cookies
+              - listitem [ref=e212]:
+                - link "Security & Compliance" [ref=e213] [cursor=pointer]:
+                  - /url: /security
+              - listitem [ref=e214]:
+                - link "Enterprise trust" [ref=e215] [cursor=pointer]:
+                  - /url: /trust
+              - listitem [ref=e216]:
+                - link "Community guidelines" [ref=e217] [cursor=pointer]:
+                  - /url: /community-guidelines
+      - generic [ref=e219]:
+        - generic [ref=e220]: © 2026 650 Industries, Inc.
+        - link "All Systems Operational" [ref=e221] [cursor=pointer]:
+          - /url: https://status.expo.dev
+          - generic [ref=e224]: All Systems Operational
+          - img [ref=e225]
+        - button "Your Privacy Choices" [ref=e229] [cursor=pointer]:
+          - img [ref=e230]
+          - generic [ref=e237]: Your Privacy Choices
+        - generic [ref=e239]:
+          - link "GitHub" [ref=e240] [cursor=pointer]:
+            - /url: https://www.github.com/expo/expo
+            - img "GitHub" [ref=e243]
+          - link "X" [ref=e246] [cursor=pointer]:
+            - /url: https://www.twitter.com/expo
+            - img "X" [ref=e249]
+          - link "Discord" [ref=e252] [cursor=pointer]:
+            - /url: https://chat.expo.dev
+            - img "Discord" [ref=e255]
+          - link "Bluesky" [ref=e258] [cursor=pointer]:
+            - /url: https://bsky.app/profile/expo.dev
+            - img "Bluesky" [ref=e261]
+        - combobox "Theme selector" [ref=e264] [cursor=pointer]:
+          - generic [ref=e266]:
+            - generic "auto":
+              - generic:
+                - generic:
+                  - img
+                - text: Auto
+          - img [ref=e267]
+        - combobox [ref=e270]

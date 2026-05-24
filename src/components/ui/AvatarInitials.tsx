@@ -20,5 +20,5 @@ export default function AvatarInitials({ name, index = 0, size = 38 }: Props) {
 
 const styles = StyleSheet.create({
   circle: { justifyContent: 'center', alignItems: 'center' },
-  letter: { fontFamily: 'DMSans_600SemiBold', color: '#fff' },
+  letter: { fontFamily: 'PlusJakartaSans_600SemiBold', color: '#fff' },
 })

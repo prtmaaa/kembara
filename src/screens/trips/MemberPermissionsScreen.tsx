@@ -71,10 +71,10 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.cream },
   content: { padding: 20, gap: 12 },
   loader: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  subtitle: { fontFamily: 'DMSans_400Regular', fontSize: 13, color: colors.muted, marginBottom: 8 },
+  subtitle: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: colors.muted, marginBottom: 8 },
   row: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.white, borderRadius: 16, padding: 16, gap: 12, shadowColor: '#000', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.07, shadowRadius: 4, elevation: 2 },
   rowInfo: { flex: 1 },
-  rowLabel: { fontFamily: 'DMSans_600SemiBold', fontSize: 14, color: colors.text },
-  rowDesc: { fontFamily: 'DMSans_400Regular', fontSize: 12, color: colors.muted, marginTop: 2 },
+  rowLabel: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 14, color: colors.text },
+  rowDesc: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 12, color: colors.muted, marginTop: 2 },
   btn: { marginTop: 8 },
 })

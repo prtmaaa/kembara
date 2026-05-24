@@ -49,7 +49,7 @@ function MainTabs() {
         tabBarActiveTintColor: colors.sunset,
         tabBarInactiveTintColor: INACTIVE_COLOR,
         tabBarLabelStyle: {
-          fontFamily: 'DMSans_500Medium',
+          fontFamily: 'PlusJakartaSans_500Medium',
           fontSize: 10,
           letterSpacing: 0.6,
           textTransform: 'uppercase',
@@ -100,7 +100,7 @@ const darkHeader = {
   headerStyle: { backgroundColor: colors.night },
   headerTintColor: colors.white,
   headerTitleStyle: {
-    fontFamily: 'CormorantGaramond_600SemiBold',
+    fontFamily: 'PlusJakartaSans_800ExtraBold',
     fontSize: 20, color: colors.white,
   },
   headerShadowVisible: false,

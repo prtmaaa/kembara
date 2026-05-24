@@ -22,6 +22,6 @@ export default function SectionHeader({ title, linkLabel, onLink }: Props) {
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 12 },
-  title: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 20, color: colors.text },
-  link: { fontFamily: 'DMSans_500Medium', fontSize: 12, color: colors.ocean },
+  title: { fontFamily: 'PlusJakartaSans_700Bold', fontSize: 20, color: colors.text },
+  link: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 12, color: colors.ocean },
 })

@@ -22,17 +22,17 @@ export default function AppInput({ label, error, style, ...props }: Props) {
 
 const styles = StyleSheet.create({
   wrap: { gap: 6 },
-  label: { fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
+  label: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 13, color: colors.text },
   input: {
     borderWidth: 1,
     borderColor: colors.border,
     borderRadius: 16,
     padding: 14,
     fontSize: 15,
-    fontFamily: 'DMSans_400Regular',
+    fontFamily: 'PlusJakartaSans_400Regular',
     color: colors.text,
     backgroundColor: colors.white,
   },
   inputError: { borderColor: colors.sunset },
-  error: { fontFamily: 'DMSans_400Regular', fontSize: 12, color: colors.sunset },
+  error: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 12, color: colors.sunset },
 })

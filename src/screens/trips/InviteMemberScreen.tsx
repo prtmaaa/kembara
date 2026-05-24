@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.cream },
   content: { padding: 20, gap: 12 },
   sectionTitle: {
-    fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 20, color: colors.text,
+    fontFamily: 'PlusJakartaSans_700Bold', fontSize: 20, color: colors.text,
   },
   linkCard: {
     flexDirection: 'row', alignItems: 'center', gap: 10,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     borderWidth: 1, borderColor: colors.border,
   },
   linkText: {
-    flex: 1, fontFamily: 'DMSans_400Regular', fontSize: 13,
+    flex: 1, fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13,
     color: colors.ocean,
   },
   linkActions: { flexDirection: 'row', gap: 10, alignItems: 'center' },
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12, paddingHorizontal: 16,
     borderWidth: 1, borderColor: colors.border,
   },
-  qrBtnText: { fontFamily: 'DMSans_500Medium', fontSize: 14, color: colors.ocean },
+  qrBtnText: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 14, color: colors.ocean },
 
   modalOverlay: {
     flex: 1, backgroundColor: 'rgba(0,0,0,0.5)',
@@ -217,11 +217,11 @@ const styles = StyleSheet.create({
     padding: 28, alignItems: 'center', width: 300,
   },
   modalTitle: {
-    fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 26, color: colors.text,
+    fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 26, color: colors.text,
     marginBottom: 4,
   },
   modalSub: {
-    fontFamily: 'DMSans_400Regular', fontSize: 13, color: colors.muted,
+    fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: colors.muted,
     textAlign: 'center', marginBottom: 20,
   },
   qrWrap: {
@@ -240,9 +240,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.07, shadowRadius: 4, elevation: 2,
   },
   memberInfo: { flex: 1 },
-  memberName: { fontFamily: 'DMSans_600SemiBold', fontSize: 14, color: colors.text },
+  memberName: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 14, color: colors.text },
   memberRole: {
-    fontFamily: 'DMSans_400Regular', fontSize: 12, color: colors.muted,
+    fontFamily: 'PlusJakartaSans_400Regular', fontSize: 12, color: colors.muted,
     textTransform: 'capitalize', marginTop: 2,
   },
   memberActions: { flexDirection: 'row', gap: 4 },

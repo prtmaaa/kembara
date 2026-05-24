@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   pill: { borderRadius: 100, paddingVertical: 5, paddingHorizontal: 12 },
   pillActive: { backgroundColor: colors.night },
   pillInactive: { backgroundColor: colors.sand },
-  label: { fontFamily: 'DMSans_500Medium', fontSize: 12 },
+  label: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 12 },
   labelActive: { color: colors.white },
   labelInactive: { color: colors.muted },
 })

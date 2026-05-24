@@ -402,25 +402,25 @@ const styles = StyleSheet.create({
     backgroundColor: colors.night,
   },
   greeting: {
-    fontFamily: 'DMSans_500Medium', fontSize: 12,
+    fontFamily: 'PlusJakartaSans_500Medium', fontSize: 12,
     color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase',
     letterSpacing: 1.2, marginBottom: 3,
   },
   headerTitle: {
-    fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 28,
+    fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 28,
     color: colors.white, lineHeight: 30,
   },
   avatar: {
     width: 38, height: 38, borderRadius: 19,
     justifyContent: 'center', alignItems: 'center',
   },
-  avatarText: { fontFamily: 'DMSans_600SemiBold', fontSize: 14, color: colors.white },
+  avatarText: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 14, color: colors.white },
 
   loader: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   emptyWrap: { flex: 1, alignItems: 'center', justifyContent: 'center', paddingBottom: 80 },
   emptyEmoji: { fontSize: 52, marginBottom: 14 },
-  emptyTitle: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 26, color: colors.text },
-  emptySub: { fontFamily: 'DMSans_400Regular', fontSize: 14, color: colors.muted, marginTop: 6, textAlign: 'center', paddingHorizontal: 40 },
+  emptyTitle: { fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 26, color: colors.text },
+  emptySub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 14, color: colors.muted, marginTop: 6, textAlign: 'center', paddingHorizontal: 40 },
 
   content: { padding: 18, gap: 18 },
 
@@ -438,17 +438,17 @@ const styles = StyleSheet.create({
     borderRadius: 100, paddingVertical: 5, paddingHorizontal: 12,
   },
   heroDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#4ade80' },
-  heroBadgeText: { fontFamily: 'DMSans_500Medium', fontSize: 11, color: colors.white, letterSpacing: 0.6 },
+  heroBadgeText: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 11, color: colors.white, letterSpacing: 0.6 },
   heroLoc: {
-    fontFamily: 'DMSans_500Medium', fontSize: 12,
+    fontFamily: 'PlusJakartaSans_500Medium', fontSize: 12,
     color: 'rgba(180,215,240,0.85)', letterSpacing: 1.2, marginBottom: 4,
   },
   heroName: {
-    fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 34,
+    fontFamily: 'PlusJakartaSans_800ExtraBold', fontSize: 34,
     color: colors.white, lineHeight: 36, letterSpacing: -0.3,
   },
   heroDates: {
-    fontFamily: 'DMSans_400Regular', fontSize: 12,
+    fontFamily: 'PlusJakartaSans_400Regular', fontSize: 12,
     color: 'rgba(180,200,230,0.8)', marginTop: 6,
   },
 
@@ -459,14 +459,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.07, shadowRadius: 4, elevation: 2,
   },
   statIcon: { width: 28, height: 28, borderRadius: 8, justifyContent: 'center', alignItems: 'center', marginBottom: 6 },
-  statVal: { fontFamily: 'DMSans_600SemiBold', fontSize: 20, color: colors.text, lineHeight: 22 },
-  statLbl: { fontFamily: 'DMSans_400Regular', fontSize: 11, color: colors.muted, marginTop: 2 },
+  statVal: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 20, color: colors.text, lineHeight: 22 },
+  statLbl: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 11, color: colors.muted, marginTop: 2 },
 
   sectionHead: {
     flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 12,
   },
-  sectionTitle: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 20, color: colors.text },
-  sectionLink: { fontFamily: 'DMSans_500Medium', fontSize: 12, color: colors.ocean },
+  sectionTitle: { fontFamily: 'PlusJakartaSans_700Bold', fontSize: 20, color: colors.text },
+  sectionLink: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 12, color: colors.ocean },
 
   budgetCard: {
     backgroundColor: colors.white, borderRadius: 16, padding: 16,
@@ -474,14 +474,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.07, shadowRadius: 4, elevation: 2,
   },
   budgetTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 10 },
-  budgetSpent: { fontFamily: 'DMSans_600SemiBold', fontSize: 22, color: colors.text },
-  budgetSpentLabel: { fontFamily: 'DMSans_400Regular', fontSize: 15, color: colors.muted },
-  budgetTarget: { fontFamily: 'DMSans_400Regular', fontSize: 12, color: colors.muted, marginTop: 2 },
-  budgetSub: { fontFamily: 'DMSans_400Regular', fontSize: 13, color: colors.muted },
+  budgetSpent: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 22, color: colors.text },
+  budgetSpentLabel: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 15, color: colors.muted },
+  budgetTarget: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 12, color: colors.muted, marginTop: 2 },
+  budgetSub: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 13, color: colors.muted },
   barTrack: { height: 6, backgroundColor: colors.sand, borderRadius: 100, overflow: 'hidden' },
   barFill: { height: '100%', borderRadius: 100 },
   budgetMeta: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 8 },
-  budgetMetaText: { fontFamily: 'DMSans_400Regular', fontSize: 11, color: colors.muted },
+  budgetMetaText: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 11, color: colors.muted },
 
   listItem: {
     backgroundColor: colors.white, borderRadius: 16,
@@ -491,8 +491,8 @@ const styles = StyleSheet.create({
   },
   listSwatch: { width: 48, height: 48, borderRadius: 12, flexShrink: 0 },
   listInfo: { flex: 1 },
-  listName: { fontFamily: 'DMSans_600SemiBold', fontSize: 14, color: colors.text },
-  listDate: { fontFamily: 'DMSans_400Regular', fontSize: 12, color: colors.muted, marginTop: 2 },
+  listName: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 14, color: colors.text },
+  listDate: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 12, color: colors.muted, marginTop: 2 },
 
   fab: {
     position: 'absolute', bottom: 22, alignSelf: 'center',
@@ -502,7 +502,7 @@ const styles = StyleSheet.create({
     shadowColor: colors.sunset,
     shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.45, shadowRadius: 16, elevation: 8,
   },
-  fabText: { fontFamily: 'DMSans_600SemiBold', fontSize: 14, color: colors.white },
+  fabText: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 14, color: colors.white },
 
   catBreakdownCard: {
     backgroundColor: colors.white, borderRadius: 16, padding: 16, gap: 14,
@@ -512,8 +512,8 @@ const styles = StyleSheet.create({
   catBreakdownRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   catBreakdownInfo: { flex: 1, gap: 6 },
   catBreakdownTop: { flexDirection: 'row', justifyContent: 'space-between' },
-  catBreakdownName: { fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
-  catBreakdownAmt: { fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: colors.text },
+  catBreakdownName: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 13, color: colors.text },
+  catBreakdownAmt: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 13, color: colors.text },
   catBarTrack: { height: 4, backgroundColor: colors.sand, borderRadius: 100 },
   catBarFill: { height: '100%' as any, borderRadius: 100 },
 
@@ -523,6 +523,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.07, shadowRadius: 4, elevation: 2,
   },
   memberContribRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  memberContribName: { flex: 1, fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
-  memberContribAmt: { fontFamily: 'DMSans_600SemiBold', fontSize: 13, color: colors.text },
+  memberContribName: { flex: 1, fontFamily: 'PlusJakartaSans_500Medium', fontSize: 13, color: colors.text },
+  memberContribAmt: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 13, color: colors.text },
 })

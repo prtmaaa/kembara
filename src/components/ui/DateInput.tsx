@@ -111,13 +111,13 @@ export default function DateInput({
 
 const styles = StyleSheet.create({
   wrap: { gap: 6 },
-  label: { fontFamily: 'DMSans_500Medium', fontSize: 13, color: colors.text },
+  label: { fontFamily: 'PlusJakartaSans_500Medium', fontSize: 13, color: colors.text },
   input: {
     borderWidth: 1, borderColor: colors.border, borderRadius: 16,
     padding: 14, backgroundColor: colors.white,
     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
   },
-  text: { fontFamily: 'DMSans_400Regular', fontSize: 15, color: colors.text },
+  text: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 15, color: colors.text },
   placeholder: { color: colors.muted },
   icon: { fontSize: 16 },
   modalOverlay: { flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.3)' },
@@ -131,6 +131,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20, paddingVertical: 12,
     borderBottomWidth: 1, borderBottomColor: colors.border,
   },
-  doneBtn: { fontFamily: 'DMSans_600SemiBold', fontSize: 16, color: colors.ocean },
-  cancelBtn: { fontFamily: 'DMSans_400Regular', fontSize: 16, color: colors.muted },
+  doneBtn: { fontFamily: 'PlusJakartaSans_600SemiBold', fontSize: 16, color: colors.ocean },
+  cancelBtn: { fontFamily: 'PlusJakartaSans_400Regular', fontSize: 16, color: colors.muted },
 })
