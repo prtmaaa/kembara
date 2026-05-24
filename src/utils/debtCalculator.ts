@@ -12,11 +12,13 @@ export function calculateDebts(
   members.forEach((m) => (balances[m.id] = 0))
 
   for (const expense of expenses) {
-    balances[expense.paid_by] = (balances[expense.paid_by] || 0) + expense.amount_in_base
-
+    if (expense.paid_by in balances) {
+      balances[expense.paid_by] += expense.amount_in_base
+    }
     for (const participant of expense.participants || []) {
-      balances[participant.user_id] =
-        (balances[participant.user_id] || 0) - participant.share_amount
+      if (participant.user_id in balances) {
+        balances[participant.user_id] -= participant.share_amount
+      }
     }
   }
 
