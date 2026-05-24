@@ -190,7 +190,7 @@ export default function ItineraryScreen() {
         </ScrollView>
       )}
 
-      <TouchableOpacity style={styles.fab} onPress={() => setShowAdd(true)} activeOpacity={0.85}>
+      <TouchableOpacity style={styles.fab} onPress={() => setShowAdd(true)} testID="fab-add-itinerary" activeOpacity={0.85}>
         <Icon name="plus" size={16} color="white" />
         <Text style={styles.fabText}>Add Item</Text>
       </TouchableOpacity>

@@ -10,6 +10,7 @@ type Props = {
   loading?: boolean
   disabled?: boolean
   style?: ViewStyle
+  testID?: string
 }
 
 const BG: Record<Variant, string> = {
@@ -25,7 +26,7 @@ const FG: Record<Variant, string> = {
 }
 
 export default function AppButton({
-  label, onPress, variant = 'primary', loading, disabled, style,
+  label, onPress, variant = 'primary', loading, disabled, style, testID,
 }: Props) {
   return (
     <TouchableOpacity
@@ -33,6 +34,7 @@ export default function AppButton({
       onPress={onPress}
       disabled={disabled || loading}
       activeOpacity={0.8}
+      testID={testID}
     >
       {loading
         ? <ActivityIndicator color={FG[variant]} />

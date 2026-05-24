@@ -126,7 +126,7 @@ export default function AddExpenseScreen({ route, navigation }: any) {
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       {error ? <Text style={styles.error}>{error}</Text> : null}
 
-      <AppInput label="Title" placeholder="e.g. Dinner at Jimbaran" value={title} onChangeText={setTitle} />
+      <AppInput label="Title" placeholder="e.g. Dinner at Jimbaran" testID="expense-title" value={title} onChangeText={setTitle} />
 
       <View style={styles.amountRow}>
         <View style={{ flex: 1 }}>
@@ -288,7 +288,7 @@ export default function AddExpenseScreen({ route, navigation }: any) {
       )}
 
       <AppButton
-        label="Add Expense"
+        label="Add Expense" testID="expense-save"
         onPress={handleSubmit}
         loading={createExpense.isPending}
         style={styles.btn}

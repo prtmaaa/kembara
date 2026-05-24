@@ -101,7 +101,7 @@ export default function SettlementScreen({ route, navigation }: any) {
                     </View>
                   </View>
                   <TouchableOpacity
-                    style={styles.settleBtn}
+                    style={styles.settleBtn} testID="settle-btn"
                     onPress={() => confirmSettle(
                       debt.from.id, debt.to.id, debt.amount,
                       fromName.split(' ')[0], toName.split(' ')[0]

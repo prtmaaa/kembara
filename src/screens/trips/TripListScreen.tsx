@@ -382,7 +382,7 @@ export default function TripListScreen({ navigation }: any) {
       )}
 
       <TouchableOpacity
-        style={styles.fab}
+        style={styles.fab} testID="fab-new-trip"
         onPress={() => navigation.navigate('CreateTrip')}
         activeOpacity={0.85}
       >

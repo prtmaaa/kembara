@@ -1,0 +1,26 @@
+appId: com.anonymous.Kembara
+---
+- runFlow: ../subflows/login.yaml
+
+- tapOn: "Itinerary"
+- waitForAnimationToEnd
+
+# Open add item modal
+- tapOn:
+    id: "fab-add-itinerary"
+- waitForAnimationToEnd
+- assertVisible: "Add Itinerary Item"
+
+# Fill title
+- tapOn: "Title"
+- inputText: "Sunset at Tanah Lot"
+
+# Select type
+- tapOn: "Activity"
+
+# Save
+- tapOn: "Add"
+- waitForAnimationToEnd
+
+# Item should appear in timeline
+- assertVisible: "Sunset at Tanah Lot"

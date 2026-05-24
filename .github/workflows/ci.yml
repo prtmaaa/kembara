@@ -8,7 +8,7 @@ on:
 
 jobs:
   check:
-    name: Type check & tests
+    name: Type check & unit tests
     runs-on: ubuntu-latest
 
     steps:
@@ -27,3 +27,45 @@ jobs:
 
       - name: Unit tests
         run: npm test -- --no-coverage
+
+  e2e:
+    name: E2E tests (Maestro)
+    runs-on: macos-latest
+    # Only run on push to main/master to save CI minutes
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Install Maestro
+        run: curl -Ls "https://get.maestro.mobile.dev" | bash
+
+      - name: Install Expo CLI
+        run: npm install -g expo-cli @expo/ngrok
+
+      - name: Build app for simulator
+        run: npx expo run:ios --no-build-cache --configuration Release
+        env:
+          EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+
+      - name: Boot simulator
+        run: |
+          DEVICE=$(xcrun simctl list devices available | grep "iPhone 16" | head -1 | sed 's/.*(\(.*\)).*/\1/')
+          xcrun simctl boot "$DEVICE" || true
+
+      - name: Run Maestro flows
+        run: |
+          export PATH="$PATH:$HOME/.maestro/bin"
+          maestro test .maestro/flows/ --env TEST_EMAIL=${{ secrets.TEST_EMAIL }} --env TEST_PASSWORD=${{ secrets.TEST_PASSWORD }}
+        env:
+          EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}

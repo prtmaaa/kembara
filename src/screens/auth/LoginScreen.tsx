@@ -36,6 +36,7 @@ export default function LoginScreen({ navigation }: any) {
             onChangeText={setEmail}
             autoCapitalize="none"
             keyboardType="email-address"
+            testID="login-email"
           />
           <AppInput
             label="Password"
@@ -43,8 +44,9 @@ export default function LoginScreen({ navigation }: any) {
             value={password}
             onChangeText={setPassword}
             secureTextEntry
+            testID="login-password"
           />
-          <AppButton label="Sign In" onPress={signIn} loading={loading} style={styles.btn} />
+          <AppButton label="Sign In" onPress={signIn} loading={loading} style={styles.btn} testID="login-submit" />
           <TouchableOpacity onPress={() => navigation.navigate('Register')}>
             <Text style={styles.link}>
               Don't have an account? <Text style={styles.linkBold}>Register</Text>

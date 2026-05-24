@@ -1,0 +1,19 @@
+appId: com.anonymous.Kembara
+---
+- runFlow: ../subflows/login.yaml
+
+- tapOn: "Expenses"
+- waitForAnimationToEnd
+
+# Category filter pills should be visible
+- assertVisible: "All"
+- assertVisible: "Food"
+- assertVisible: "Transport"
+
+# Tap Food filter — only food expenses should show (or empty state)
+- tapOn: "Food"
+- waitForAnimationToEnd
+
+# Tap All to reset
+- tapOn: "All"
+- waitForAnimationToEnd

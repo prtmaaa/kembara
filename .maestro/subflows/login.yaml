@@ -1,0 +1,16 @@
+appId: com.anonymous.Kembara
+---
+# Reusable login subflow. Requires TEST_EMAIL and TEST_PASSWORD env vars.
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+- tapOn:
+    id: "login-email"
+- inputText: ${TEST_EMAIL}
+- tapOn:
+    id: "login-password"
+- inputText: ${TEST_PASSWORD}
+- tapOn:
+    id: "login-submit"
+- waitForAnimationToEnd
+- assertVisible: "My Trips"

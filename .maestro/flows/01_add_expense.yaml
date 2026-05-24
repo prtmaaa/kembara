@@ -1,0 +1,30 @@
+appId: com.anonymous.Kembara
+---
+- runFlow: ../subflows/login.yaml
+
+# Navigate to Expenses tab
+- tapOn: "Expenses"
+- waitForAnimationToEnd
+
+# Open Add Expense
+- tapOn:
+    id: "fab-add-expense"
+- waitForAnimationToEnd
+- assertVisible: "Add Expense"
+
+# Fill in title
+- tapOn:
+    id: "expense-title"
+- inputText: "Lunch at Jimbaran"
+
+# Fill in amount
+- tapOn: "Amount"
+- inputText: "120000"
+
+# Save
+- tapOn:
+    id: "expense-save"
+- waitForAnimationToEnd
+
+# Toast should appear and we should be back on Expenses tab
+- assertVisible: "Lunch at Jimbaran"

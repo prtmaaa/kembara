@@ -184,7 +184,7 @@ export default function ExpensesTabScreen({ navigation, route }: any) {
 
       {/* FAB */}
       <TouchableOpacity
-        style={styles.fab}
+        style={styles.fab} testID="fab-add-expense"
         onPress={() => navigation.navigate('AddExpense', { tripId: trip.id, tripName: trip.name })}
         activeOpacity={0.85}
       >
