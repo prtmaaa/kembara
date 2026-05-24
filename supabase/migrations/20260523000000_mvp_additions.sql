@@ -27,11 +27,23 @@ create table if not exists trip_invites (
 -- RLS for trip_invites
 alter table trip_invites enable row level security;
 
-create policy "Trip members can view invites" on trip_invites for select
-  using (trip_id in (select get_my_trip_ids()));
+do $$ begin
+  if not exists (select 1 from pg_policies where tablename = 'trip_invites' and policyname = 'Trip members can view invites') then
+    create policy "Trip members can view invites" on trip_invites for select
+      using (trip_id in (select get_my_trip_ids()));
+  end if;
+end $$;
 
-create policy "Trip members can create invites" on trip_invites for insert
-  with check (trip_id in (select get_my_trip_ids()) and auth.uid() = created_by);
+do $$ begin
+  if not exists (select 1 from pg_policies where tablename = 'trip_invites' and policyname = 'Trip members can create invites') then
+    create policy "Trip members can create invites" on trip_invites for insert
+      with check (trip_id in (select get_my_trip_ids()) and auth.uid() = created_by);
+  end if;
+end $$;
 
-create policy "Trip members can delete invites" on trip_invites for delete
-  using (trip_id in (select get_my_trip_ids()));
+do $$ begin
+  if not exists (select 1 from pg_policies where tablename = 'trip_invites' and policyname = 'Trip members can delete invites') then
+    create policy "Trip members can delete invites" on trip_invites for delete
+      using (trip_id in (select get_my_trip_ids()));
+  end if;
+end $$;
