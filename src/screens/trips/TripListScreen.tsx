@@ -174,9 +174,11 @@ export default function TripListScreen({ navigation }: any) {
             <Text style={styles.greeting}>{getGreeting()}</Text>
             <Text style={styles.headerTitle}>{firstName ? `${firstName}'s Trips` : 'My Trips'}</Text>
           </View>
-          <View style={[styles.avatar, { backgroundColor: '#5B7FA6' }]}>
-            <Text style={styles.avatarText}>{avatarLetter}</Text>
-          </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <View style={[styles.avatar, { backgroundColor: '#5B7FA6' }]}>
+              <Text style={styles.avatarText}>{avatarLetter}</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
 

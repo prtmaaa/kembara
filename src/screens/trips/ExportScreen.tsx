@@ -3,6 +3,7 @@ import {
   View, Text, ScrollView, TouchableOpacity,
   StyleSheet, Share, ActivityIndicator, SafeAreaView,
 } from 'react-native'
+import Icon from '../../components/Icon'
 import ViewShot, { captureRef } from 'react-native-view-shot'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useExpenses } from '../../hooks/useExpenses'
@@ -18,7 +19,7 @@ const CAT_LABELS: Record<string, string> = {
   activity: 'Activity', shopping: 'Shopping', other: 'Other',
 }
 
-export default function ExportScreen({ route }: any) {
+export default function ExportScreen({ route, navigation }: any) {
   const { tripId } = route.params
   const cardRef = useRef<any>(null)
   const [sharing, setSharing] = React.useState(false)
@@ -77,6 +78,9 @@ export default function ExportScreen({ route }: any) {
     <View style={styles.container}>
       <SafeAreaView style={styles.safeHeader}>
         <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+            <Icon name="chevronL" size={20} color={colors.white} />
+          </TouchableOpacity>
           <Text style={styles.h1}>Export</Text>
           <Text style={styles.sub}>{trip.name}</Text>
         </View>
@@ -173,6 +177,7 @@ const styles = StyleSheet.create({
   loader: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   safeHeader: { backgroundColor: colors.night },
   header: { backgroundColor: colors.night, paddingHorizontal: 22, paddingTop: 12, paddingBottom: 20 },
+  backBtn: { marginBottom: 8, alignSelf: 'flex-start' },
   h1: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 32, color: colors.white },
   sub: { fontFamily: 'DMSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
   scroll: { padding: 18, gap: 18 },

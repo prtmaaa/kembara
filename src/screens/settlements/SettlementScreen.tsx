@@ -53,6 +53,9 @@ export default function SettlementScreen({ route, navigation }: any) {
     <View style={styles.container}>
       <SafeAreaView style={styles.safeHeader}>
         <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+            <Icon name="chevronL" size={20} color={colors.white} />
+          </TouchableOpacity>
           <Text style={styles.h1}>Settle Up</Text>
           <Text style={styles.sub}>{trip?.name}</Text>
         </View>
@@ -142,6 +145,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.cream },
   safeHeader: { backgroundColor: colors.night },
   header: { backgroundColor: colors.night, paddingHorizontal: 22, paddingTop: 12, paddingBottom: 20 },
+  backBtn: { marginBottom: 8, alignSelf: 'flex-start' },
   h1: { fontFamily: 'CormorantGaramond_600SemiBold', fontSize: 32, color: colors.white },
   sub: { fontFamily: 'DMSans_400Regular', fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 3 },
   content: { padding: 18, gap: 24 },
